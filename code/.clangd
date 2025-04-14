@@ -3,5 +3,5 @@ CompileFlags:
     - "-target"
     - "avr"
     - "-mmcu=atmega2560"
-    - "-I../incs/"
-    - "-I../../incs/"
+    - "-I../include/"
+    - "-I../../include/"

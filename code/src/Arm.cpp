@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/* ***************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Arm.cpp                                            :+:      :+:    :+:   */
@@ -12,43 +12,33 @@
 
 #include "Arm.hpp"
 
-Arm::Arm(void)
-{
+Arm::Arm(void) {}
+
+Arm::Arm(Arm const& src) {
+	*this = src;  //	Copy everything manually
 }
 
-Arm::Arm(Arm const &src)
-{
-	*this = src;	//	Copy everything manually
-}
-
-Arm		&Arm::operator=(Arm const &src)
-{
-	if (&src != this)
-	{
+Arm& Arm::operator=(Arm const& src) {
+	if (&src != this) {
 		//	If something malloc'd, free current alloc, make new alloc, copy everyhing manually
 	}
 	return (*this);
 }
 
-Arm::~Arm(void)
-{
-}
+Arm::~Arm(void) {}
 
-Hand	Arm::getHand(void) const
-{
+Hand Arm::getHand(void) const {
 	return (this->_hand);
 }
 
-void	Arm::init(void) const
-{
+void Arm::init(void) const {
 	//	Set arm to a start position
 	//	Set motor PWM to something
 	//	Init hand
 	getHand().init();
 }
 
-void	Arm::move(unsigned int const pos) const
-{
+void Arm::move(unsigned int const pos) const {
 	//	Set motor PWM to pos
 	(void)pos;
 }

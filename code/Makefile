@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		=	Hall
+NAME 		= lamain
 
 MAKE 		=	make
 CXX			=	avr-g++
@@ -27,27 +27,35 @@ B_RATE		=	115200
 
 DEBUG		=
 
-SRC			=	
+SRC_DIR		= src/
 
-HEADER		=	
+SRC			= Arm.cpp \
+			  Finger.cpp \
+			  Hand.cpp \
+			  main.cpp
 
-INCLUDE		=	-I.
+HEADER		= Arm.hpp \
+			  Finger.hpp \
+			  Hand.hpp \
+			  Motor.hpp \
+			  main.hpp
 
-BIN			=	$(SRC:.c=.bin)
+INCLUDE		=	-I./include
 
-$(NAME): $(SRC)
-	@$(MAKE) hex --no-print-directory
-	@$(MAKE) flash --no-print-directory
+BIN			=	$(SRC:.cpp=.bin)
 
-%.bin: %.c $(HEADER)
-	$(CXX) $(CXXFLAGS) $(INCLUDE) $(DEBUG) -mmcu=$(MMCU) -DF_CPU=$(F_CPU) -O1 -c $< -o $@
+DEPS		= $(BIN:.bin=.d)
+
+$(NAME):$(BIN)
+	$(CXX) $(CFLAGS) $(INCLUDE) -mmcu=$(MMCU) $(DEBUG) $(BIN) -o $(NAME).bin
+	avr-objcopy -j .text -j .data -g $(NAME).bin $(NAME).hex
+
+%.bin: $(SRC_DIR)%.cpp
+	@echo "rule $@"
+	$(CXX) $(CXXFLAGS) $(INCLUDE) $(DEBUG) -mmcu=$(MMCU) -DF_CPU=$(F_CPU) -O1 -c  -MMD $< -o $@
 
 all:
 	@$(MAKE) --no-print-directory $(NAME)
-
-hex: $(BIN)
-	$(CC) $(CFLAGS) $(INCLUDE) -mmcu=$(MMCU) $(DEBUG) $(BIN) -o $(NAME).bin
-	avr-objcopy -j .text -j .data -g $(NAME).bin $(NAME).hex
 
 flash:
 	avrdude -c $(PROGRAMMER) -P $(PORT) -p $(PARTNO) -b $(B_RATE) -D "-Uflash:w:$(NAME).hex"
@@ -61,6 +69,14 @@ ifneq ("$(wildcard *.hex)", "")
 	$(RM) -f *.hex
 endif
 
+ifneq ("$(wildcard *.d)", "")
+	$(RM) -f *.d
+endif
+
+
 re:	clean
 	@$(MAKE) --no-print-directory
-.PHONY: all clean flash hex re 
+
+-include $(DEPS)
+
+.PHONY: all clean flash re 
