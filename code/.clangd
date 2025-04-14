@@ -1,5 +1,7 @@
 CompileFlags:
   Add: 
+    - "-target"
+    - "avr"
+    - "-mmcu=atmega2560"
     - "-I../incs/"
     - "-I../../incs/"
-    - "-mmcu=atmega328p"
