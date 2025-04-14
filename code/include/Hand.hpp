@@ -6,20 +6,33 @@
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:58:57 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/04/14 14:58:06 by fguarrac         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:08:35 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HAND_HPP
 # define HAND_HPP
 
-# include "Finger.hpp"
+# include "Motor.hpp"
+# include "Sensor.hpp"
+
+enum e_state
+{
+	E_GRAB,
+	E_CLOSE,
+	E_WAIT_BEFORE_SERVE,
+	E_MOVE_TO_SERVE,
+	E_SERV,
+	E_OPEN,
+	E_WAIT_BEFORE_GRAB,
+	E_MOVE_TO_GRAB
+};
 
 class	Hand
 {
-	Motor	_motor[7];
-	Sensor	_sensor[5];
-	//	Pgm state enum
+	Motor			_motor[7];
+	Sensor			_sensor[5];
+	enum e_state	_state;
 
 public:
 
@@ -28,9 +41,13 @@ public:
 	Hand	&operator=(Hand const &);
 	~Hand(void);
 
+	enum e_state	getState(void) const;
+	Motor			getMotor(unsigned int);
+
 	void	init(void) const;
 	void	close(void) const;
 	void	open(void) const;
+	void	update(void);
 	//	Animate hand
 	//	Rock, paper, scissors
 	//	..

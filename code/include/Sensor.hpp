@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Sensor.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/11 14:50:03 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/04/14 18:15:04 by fguarrac         ###   ########.fr       */
+/*   Created: 2025/04/14 16:24:15 by fguarrac          #+#    #+#             */
+/*   Updated: 2025/04/14 16:26:11 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#ifndef SENSOR_HPP
+# define SENSOR_HPP
 
-int		main(void)
+class Sensor
 {
-	Hand	hand;
+	unsigned int	_pressure;
 
-	hand.init();
-	//	init timers/interrupts to read sensors continuously
+public:
 
-	while (42)
-		hand.update();
-}
+	Sensor(void);
+	Sensor(Sensor const &);
+	Sensor	&operator=(Sensor const &);
+	~Sensor(void);
+
+	unsigned int	getPressure(void) const;
+	void			setPressure(unsigned int);
+};
+
+#endif
