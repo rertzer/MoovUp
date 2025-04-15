@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hallSensorUno.c                                    :+:      :+:    :+:   */
+/*   hallSensorUno.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:48:49 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/04/02 18:39:12 by fguarrac         ###   ########.fr       */
+/*   Updated: 2025/04/15 12:47:44 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hallSensor.h"
+#include "hallSensor.hpp"
 
 static void		ft_itoaptr(uint16_t conv, char *ptr)
 {

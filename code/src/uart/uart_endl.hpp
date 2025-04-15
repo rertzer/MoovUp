@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   uart_printstrnl.c                                  :+:      :+:    :+:   */
+/*   uart_endl.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 15:44:43 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/03/06 23:23:54 by fguarrac         ###   ########.fr       */
+/*   Created: 2025/03/07 00:48:21 by fguarrac          #+#    #+#             */
+/*   Updated: 2025/04/15 12:49:28 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "uart_printstrnl.h"
+#ifndef UART_ENDL_HPP
+# define UART_ENDL_HPP
 
-void	uart_printstrnl(const char* str)
-{
-	while (str && *str)
-		uart_tx(*(str++));
-	uart_tx('\r');
-	uart_tx('\n');
-}
+# include "uart_tx.hpp"
+
+void	uart_endl(void);
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:58:57 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/04/14 19:18:59 by fguarrac         ###   ########.fr       */
+/*   Updated: 2025/04/15 13:01:07 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,9 @@ Motor	Hand::getMotor(unsigned int nbr)
 
 void	Hand::init(void) const
 {
-	//	Set wrist position PWM
-	//	Set fingers PWM
+	//	Set arm to start position
+	//	Set wrist to start position
+	//	Set fingers to start position
 }
 
 void	Hand::close(void) const

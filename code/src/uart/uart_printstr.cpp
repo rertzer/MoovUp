@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hallSensor.h                                       :+:      :+:    :+:   */
+/*   uart_printstr.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/01 17:46:40 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/04/01 17:59:22 by fguarrac         ###   ########.fr       */
+/*   Created: 2025/03/06 15:44:43 by fguarrac          #+#    #+#             */
+/*   Updated: 2025/04/15 12:52:42 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HALLSENSOR_H
-# define HALLSENSOR_H
+#include "uart_printstr.hpp"
 
-# include <avr/io.h>
-# include <util/delay.h>
-# include "uart_init.h"
-# include "uart_printstrnl.h"
-
-#endif
+void	uart_printstr(const char* str)
+{
+	while (str && *str)
+		uart_tx(*(str++));
+}

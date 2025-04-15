@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   uart_printstrnl.h                                  :+:      :+:    :+:   */
+/*   uart_rx.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 15:43:43 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/03/07 01:04:35 by fguarrac         ###   ########.fr       */
+/*   Created: 2025/03/06 17:58:53 by fguarrac          #+#    #+#             */
+/*   Updated: 2025/04/15 12:55:14 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UART_PRINTSTRNL_H
-# define UART_PRINTSTRNL_H
+#include "uart_rx.hpp"
 
-# include "uart_tx.h"
-
-void	uart_printstrnl(const char* str);
-
-#endif
+char	uart_rx(void)
+{
+	while (!(UCSR0A & (1 << RXC0)))	//	Wait for data to be received
+		;
+	return (UDR0);					//	Get and return received data from buffer
+}

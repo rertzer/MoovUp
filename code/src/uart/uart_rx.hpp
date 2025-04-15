@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   uart_init.h                                        :+:      :+:    :+:   */
+/*   uart_rx.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 00:36:59 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/03/06 11:25:46 by fguarrac         ###   ########.fr       */
+/*   Created: 2025/03/06 17:58:02 by fguarrac          #+#    #+#             */
+/*   Updated: 2025/04/15 12:55:46 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UART_INIT_H
-# define UART_INIT_H
+#ifndef UART_RX_HPP
+# define UART_RX_HPP
 
 # include <avr/io.h>
 
-void	uart_init(void);
+char	uart_rx(void);
 
 #endif

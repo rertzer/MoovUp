@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   uart_rx.c                                          :+:      :+:    :+:   */
+/*   hallSensor.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 17:58:53 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/03/06 18:34:54 by fguarrac         ###   ########.fr       */
+/*   Created: 2025/04/01 17:46:40 by fguarrac          #+#    #+#             */
+/*   Updated: 2025/04/15 11:21:20 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "uart_rx.h"
+#ifndef HALLSENSOR_HPP
+# define HALLSENSOR_HPP
 
-char	uart_rx(void)
-{
-	while (!(UCSR0A & (1 << RXC0)))	//	Wait for data to be received
-		;
-	return (UDR0);					//	Get and return received data from buffer
-}
+# include <avr/io.h>
+# include <util/delay.h>
+# include "uart_init.h"
+# include "uart_printstrnl.h"
+
+#endif

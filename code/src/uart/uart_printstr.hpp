@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   uart_rx.h                                          :+:      :+:    :+:   */
+/*   uart_printstr.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 17:58:02 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/03/06 18:30:13 by fguarrac         ###   ########.fr       */
+/*   Created: 2025/03/06 15:43:43 by fguarrac          #+#    #+#             */
+/*   Updated: 2025/04/15 12:53:20 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UART_RX_H
-# define UART_RX_H
+#ifndef PRINT_STR_HPP
+# define PRINT_STR_HPP
 
-# include <avr/io.h>
+# include "uart_tx.hpp"
 
-char	uart_rx(void);
+void	uart_printstr(const char* str);
 
 #endif

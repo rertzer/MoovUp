@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   uart_printstr.c                                    :+:      :+:    :+:   */
+/*   uart_tx.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 15:44:43 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/03/06 23:23:35 by fguarrac         ###   ########.fr       */
+/*   Created: 2025/03/06 00:39:31 by fguarrac          #+#    #+#             */
+/*   Updated: 2025/04/15 12:56:12 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "uart_printstr.h"
+#include "uart_tx.hpp"
 
-void	uart_printstr(const char* str)
+void	uart_tx(char c)
 {
-	while (str && *str)
-		uart_tx(*(str++));
+	while (!(UCSR0A & (1 << UDRE0)))	//	Wait for empty transmit buffer
+		;
+	UDR0 = c;							//	Put data into buffer, sends the data
 }

@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   uart_tx.c                                          :+:      :+:    :+:   */
+/*   uart_endl.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 00:39:31 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/03/07 02:04:51 by fguarrac         ###   ########.fr       */
+/*   Created: 2025/03/07 00:49:01 by fguarrac          #+#    #+#             */
+/*   Updated: 2025/04/15 12:48:45 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "uart_tx.h"
+#include "uart_endl.hpp"
 
-void	uart_tx(char c)
+void	uart_endl(void)
 {
-	while (!(UCSR0A & (1 << UDRE0)))	//	Wait for empty transmit buffer
-		;
-	UDR0 = c;							//	Put data into buffer, sends the data
+	uart_tx('\r');
+	uart_tx('\n');
 }
