@@ -6,7 +6,7 @@
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:58:57 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/04/14 19:08:35 by fguarrac         ###   ########.fr       */
+/*   Updated: 2025/04/15 13:22:03 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ enum e_state
 class	Hand
 {
 	Motor			_motor[7];
-	Sensor			_sensor[5];
+	volatile Sensor	_sensor[5];
 	enum e_state	_state;
 
 public:

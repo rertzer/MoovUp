@@ -6,7 +6,7 @@
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 14:58:53 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/04/14 19:11:54 by fguarrac         ###   ########.fr       */
+/*   Updated: 2025/04/15 13:22:25 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,20 @@
 # define ARM_SERV_POS
 # define ARM_GRAB_POS
 
+enum	e_finger
+{
+	E_THUMB,
+	E_INDEX,
+	E_MIDDLE,
+	E_RING,
+	E_PINKY
+};
+
 class Motor
 {
 	unsigned int	_position;
 
+	//void			_calibrateFinger(void);
 	void			_setPosition(unsigned int);
 
 public:
