@@ -6,7 +6,7 @@
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:26:34 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/04/14 16:31:47 by fguarrac         ###   ########.fr       */
+/*   Updated: 2025/04/15 16:02:27 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@ Sensor::~Sensor(void)
 {
 }
 
-unsigned int	Sensor::getPressure(void) const
+unsigned int	Sensor::getPressure(void) const volatile
 {
+	return (this->_pressure);
 }
 
-void			Sensor::setPressure(unsigned int)
+void			Sensor::setPressure(unsigned int pressure)
 {
+	this->_pressure = pressure;
 }

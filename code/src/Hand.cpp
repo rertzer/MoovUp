@@ -6,7 +6,7 @@
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:58:57 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/04/15 13:01:07 by fguarrac         ###   ########.fr       */
+/*   Updated: 2025/04/15 16:51:55 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Hand::~Hand(void)
 {
 }
 
-Hand::getState(void) const
+enum e_state	Hand::getState(void) const
 {
 	return (this->_state);
 }
@@ -72,8 +72,9 @@ void	Hand::update(void)
 		case E_GRAB:
 		{
 			//	Wait for target pressure to be reached
-				//	if (some_finger's_pressure > grab pressure)
-					//	this->_state = E_CLOSE;
+			if ((this->_sensor[INDEX].getPressure() > P1 || this->_sensor[MIDDLE].getPressure() > P1)
+					&& this->_sensor[THUMB].getPressure() < P2)	//	Thumb sensor not at P2 really needed ? To avoid closing hand if object already touches thum ?
+				this->_state = E_CLOSE;
 			break ;
 		}
 		case E_CLOSE:
@@ -81,26 +82,30 @@ void	Hand::update(void)
 			//	Make little hand movement to acknowledge glass is in hand ?
 			//	Close hand
 			//	while (thumb pressure < treshold value)
-				//	close thumb, index and middle finger
-			//	this->_state = E_WAIT_BEFORE_SERVE;
+				//	Close thumb
+			this->_motor[THUMB].smoothMove(THUMB_CLOSED_POS, P3);
+			//	Then close ring and pinky until pressure changes for those fingers (Or define some pressures to keep it simple)
+			this->_motor[RING].smoothMove(RING_CLOSED_POS, P4);
+			this->_motor[PINKY].smoothMove(PINKY_CLOSED_POS, P5);
+			this->_state = E_WAIT_BEFORE_SERVE;
 			break ;
 		}
 		case E_WAIT_BEFORE_SERVE:
 		{
 			//	Delay
-			//	Make little hand movement to annonce movement will start ?
-			//	this->_state = E_MOVE_TO_SERVE;
+			//	Make little hand movement to annonce movement will start ?	(wrist movement)
+			this->_state = E_MOVE_TO_SERVE;
 			break ;
 		}
 		case E_MOVE_TO_SERVE:
 		{
-			//	hand.getMotor(x).smartMmove(ARM_SERV_POS);	//	Make it smooth ! (Using new smartMove function)
-			//	this->_state = E_SERV;
+			this->_motor[ARM].smartMmove(ARM_SERV_POS);	//	Make it smooth ! (Using new smartMove function)
+			this->_state = E_SERV;
 			break ;
 		}
 		case E_SERV:
 		{
-			//	Wait for target pressure to be read
+			//	Wait for glass to be touched by human (pressure change in some fingers)
 				//	if (some_finger's_pressure > release pressure)
 					//	this->_state = E_OPEN;
 			break ;
@@ -110,22 +115,25 @@ void	Hand::update(void)
 			//	Start opening hand by pinky finger
 			//	Then ring finger
 			//	...
+			this->_motor[PINKY].smoothMove(PINKY_OPEN_POS);
+			this->_motor[RING].smoothMove(RING_OPEN_POS);
+			this->_motor[MIDDLE].smoothMove(MIDDLE_OPEN_POS);
 			//	Maybe keep thumb not fully open to still hold glass ?
-			//	this->_state = E_WAIT_BEFORE_GRAB;
+			this->_state = E_WAIT_BEFORE_GRAB;
 			break ;
 		}
 		case E_WAIT_BEFORE_GRAB:
 		{
 			//	Delay
-			//	Make little hand movement to annonce movement will start ?
+			//	Make little hand movement to annonce movement will start ?	(wrist movement)
 			//	Fully open thumb ?
-			//	this->_state = E_MOVE_TO_GRAB;
+			this->_state = E_MOVE_TO_GRAB;
 			break ;
 		}
 		case E_MOVE_TO_GRAB:
 		{
-			//	hand.getMotor(x).smartMove(ARM_GRAB_POS);	//	Make it smooth ! (Using new smartMove function)
-			//	this->_state = E_GRAB;
+			this->_motor[ARM].smartMove(ARM_GRAB_POS);	//	Make it smooth ! (Using new smartMove function)
+			this->_state = E_GRAB;
 			break ;
 		}
 	}
