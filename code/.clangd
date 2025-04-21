@@ -5,3 +5,4 @@ CompileFlags:
     - "-mmcu=atmega2560"
     - "-I../include/"
     - "-I../../include/"
+    - "-I../../hallSensor/"
