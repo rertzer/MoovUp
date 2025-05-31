@@ -34,7 +34,15 @@ SUB_DIRS    = hallSensor/
 BIN_PATHS = $(addprefix $(BIN_DIR), $(SUB_DIRS))
 
 SRCPP			= main.cpp \
-				motor.cpp
+				Motor.cpp \
+				MotorThumb.cpp \
+				MotorIndex.cpp \
+				MotorMiddle.cpp \
+				MotorRing.cpp \
+				MororPinky.cpp \
+				MotorWrist.cpp \
+				MotorElbow.cpp
+
 
 
 SRC =		  hallSensor/uart_endl.c \
