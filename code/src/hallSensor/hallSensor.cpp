@@ -6,7 +6,7 @@
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 16:21:12 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/04/15 11:22:11 by fguarrac         ###   ########.fr       */
+/*   Updated: 2025/06/03 17:22:05 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ static void ft_itoaptr(uint16_t conv, char* ptr) {
 }
 
 int main(void) {
-	uint16_t conv;
-	char	 digital[6];  //	Max value = 65535 + '\0'
+	uint16_t	conv;
+	char		digital[6];  //	Max value = 65535 + '\0'
+	Uart		uart;
 
 	//	Init
 
@@ -39,7 +40,7 @@ int main(void) {
 	DDRF &= ~(1u << DDF0);	   //	Set pin A0 as input (Port F 0)
 	PORTF &= ~(1u << PORTF0);  //	Disable pull up resistor
 
-	uart_init();
+	uart.init();
 
 	//	Init ADC
 	ADMUX |= (1u << REFS0);	  //	Set AVcc as reference
@@ -68,7 +69,7 @@ int main(void) {
 			;  //	Wait for conversion to finish
 		conv = ADC;
 		ft_itoaptr(conv, digital);
-		uart_printstrnl(digital);
+		uart.printstrnl(digital);
 		_delay_ms(20);
 	}
 }

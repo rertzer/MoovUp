@@ -6,15 +6,15 @@
 #    By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/03 22:19:34 by fguarrac          #+#    #+#              #
-#    Updated: 2025/04/07 14:31:40 by fguarrac         ###   ########.fr        #
+#    Updated: 2025/06/03 17:13:38 by fguarrac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		=	Hall
 
 MAKE 		=	make
-CC			=	avr-gcc
-CFLAGS		=	-Wall -Wextra -Werror
+CXX			=	avr-g++
+CXXFLAGS	=	-Wall -Wextra -Werror
 MMCU		=	atmega328p	#atmega2560
 RM			=	$(shell which rm)
 
@@ -27,13 +27,11 @@ B_RATE		=	115200
 
 DEBUG		=
 
-SRC			=	hallSensor.c		uart_init.c			uart_tx.c \
-				uart_printstr.c 	uart_printstrnl.c	uart_endl.c
+SRC			=	hallSensor.cpp		uart/Uart.cpp
 
-HEADER		=	hallSensor.h		uart_init.h			uart_tx.h \
-				uart_printstr.h		uart_printstrnl.h	uart_endl.h
+HEADER		=	hallSensor.hpp		uart/Uart.hpp
 
-INCLUDE		=	-I.
+INCLUDE		=	-I. -I./uart
 
 BIN			=	$(SRC:.c=.bin)
 
@@ -42,7 +40,7 @@ $(NAME): $(SRC)
 	@$(MAKE) flash --no-print-directory
 
 %.bin: %.c $(HEADER)
-	$(CC) $(CFLAGS) $(INCLUDE) $(DEBUG) -mmcu=$(MMCU) -DF_CPU=$(F_CPU) -O1 -c $< -o $@
+	$(CXX) $(CXXFLAGS) $(INCLUDE) $(DEBUG) -mmcu=$(MMCU) -DF_CPU=$(F_CPU) -O1 -c $< -o $@
 
 .PHONY: all
 all:
@@ -50,7 +48,7 @@ all:
 
 .PHONY: hex
 hex: $(BIN)
-	$(CC) $(CFLAGS) $(INCLUDE) -mmcu=$(MMCU) $(DEBUG) $(BIN) -o $(NAME).bin
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -mmcu=$(MMCU) $(DEBUG) $(BIN) -DF_CPU=$(F_CPU) -o $(NAME).bin
 	avr-objcopy -j .text -j .data -g $(NAME).bin $(NAME).hex
 
 .PHONY: flash
