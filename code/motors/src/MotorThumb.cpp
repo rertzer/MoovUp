@@ -9,8 +9,8 @@ MotorThumb::MotorThumb() {
 	TCCR3A |= (1 << COM3B1);
 	TCCR3A &= ~(1 << COM3B0);
 
-	// initial position at 0 degre (1 ms pulse)
-	OCR3B = 1000;
+	// initial position at 180 degre (2 ms pulse)
+	OCR3B = 2000;
 
 	// set pin as output
 	DDRE |= (1 << PE4);

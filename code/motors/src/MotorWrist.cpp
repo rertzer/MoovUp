@@ -9,8 +9,8 @@ MotorWrist::MotorWrist() {
 	TCCR4A |= (1 << COM4C1);
 	TCCR4A &= ~(1 << COM4C0);
 
-	// initial position at 0 degre (1 ms pulse)
-	OCR4C = 1000;
+	// initial position at 90 degre (1.5 ms pulse)
+	OCR4C = 1500;
 
 	// set pin as output
 	DDRE |= (1 << PH5);
