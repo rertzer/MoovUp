@@ -18,8 +18,9 @@ CXXFLAGS	=	-Wall -Wextra -Werror
 MMCU		=	atmega2560
 RM			=	$(shell which rm)
 
-PORT		=	/dev/ttyACM0
 #/dev/ttyUSB0 ; tip: plug the device and enter sudo dmesg to get the port name
+PORT		=	/dev/ttyACM0
+
 PARTNO		=	m2560
 PROGRAMMER	=	wiring
 
@@ -41,7 +42,8 @@ SRCPP			= main.cpp \
 				MotorRing.cpp \
 				MororPinky.cpp \
 				MotorWrist.cpp \
-				MotorElbow.cpp
+				MotorElbow.cpp \
+				MotorShoulder.cpp
 
 
 
