@@ -6,11 +6,67 @@
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 16:21:12 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/06/03 17:22:05 by fguarrac         ###   ########.fr       */
+/*   Updated: 2025/06/14 00:57:49 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hallSensor.hpp"
+
+
+Hall::Hall(uint8_t pin): _pin(pin)
+{
+	//	Call init here? Or do init here?
+}
+
+Hall::Hall(Hall const &)
+{
+}
+
+Hall	&Hall::operator=(Hall const &)
+{
+}
+
+Hall::~Hall(void)
+{
+}
+
+void		Hall::init(void)
+{
+	//	Set port
+	uint8_t bit = g_pinToBit + this->_pin;
+	uint8_t port = g_pinToPort + this->_pin;
+
+	uint8_t	*reg = g_portToMode + port;
+	uint8_t	*out = g_portToOutput + port;
+
+	uint8_t oldSREG = SREG;
+    cli();
+	*reg &= ~bit;
+	*out &= ~bit;
+	SREG = oldSREG;
+
+//	//	Set port
+//	DDRF &= ~(1u << DDF0);	   //	Set pin A0 as input (Port F 0)
+//	PORTF &= ~(1u << PORTF0);  //	Disable pull up resistor
+
+	//	Init ADC
+	ADMUX |= (1u << REFS0);	  //	Set AVcc as reference
+	ADCSRA |= (1u << ADEN);	  //	Enable ADC
+	ADCSRA |= (1u << ADPS0);  //	Set prescaler to 128
+	ADCSRA |= (1u << ADPS1);  //	Set prescaler to 128
+	ADCSRA |= (1u << ADPS2);  //	Set prescaler to 128
+}
+
+uint16_t	Hall::readValue(void)
+{
+}
+
+
+
+
+
+
+
 
 static void ft_itoaptr(uint16_t conv, char* ptr) {
 	uint16_t convTmp;
@@ -34,12 +90,12 @@ int main(void) {
 	char		digital[6];  //	Max value = 65535 + '\0'
 	Uart		uart;
 
-	//	Init
-
-	//	Set port
-	DDRF &= ~(1u << DDF0);	   //	Set pin A0 as input (Port F 0)
-	PORTF &= ~(1u << PORTF0);  //	Disable pull up resistor
-
+//	//	Init
+//
+//	//	Set port
+//	DDRF &= ~(1u << DDF0);	   //	Set pin A0 as input (Port F 0)
+//	PORTF &= ~(1u << PORTF0);  //	Disable pull up resistor
+//
 	uart.init();
 
 	//	Init ADC
