@@ -6,12 +6,11 @@
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 16:21:12 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/06/15 01:06:44 by fguarrac         ###   ########.fr       */
+/*   Updated: 2025/06/15 14:57:34 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hallSensor.hpp"
-
 
 Hall::Hall(uint8_t pin): _pin(pin)
 {
@@ -20,7 +19,6 @@ Hall::Hall(uint8_t pin): _pin(pin)
 
 Hall::Hall(Hall const &src): _pin(src.getPin())
 {
-	//this->_pin = src.getPin();
 }
 
 Hall	&Hall::operator=(Hall const &src)
@@ -55,15 +53,6 @@ void		Hall::_init(void)
 	SREG = oldSREG;
 
 	//	Init ADC
-	uint8_t		pinTmp = this->_pin;
-	if (pinTmp >= 54)
-		pinTmp -= 54;
-
-//	//	Set port
-//	DDRF &= ~(1u << DDF0);	   //	Set pin A0 as input (Port F 0)
-//	PORTF &= ~(1u << PORTF0);  //	Disable pull up resistor
-
-	//	Init ADC
 	ADMUX |= (1u << REFS0);	  //	Set AVcc as reference
 	ADCSRA |= (1u << ADPS0);  //	Set prescaler to 128
 	ADCSRA |= (1u << ADPS1);  //	Set prescaler to 128
@@ -90,12 +79,9 @@ uint16_t	Hall::readValue(void)
 		ADCSRB |= (1u << MUX5);		//	Set MUX5
 	ADMUX &= 0xF8;					//	Clear previous ADC input
 	ADMUX |= (this->_pin & 0x07);	//	Select new ADC input
-	//	Start converson
 	ADCSRA |= (1u << ADSC);	 		//	Start conversion
-	//	Wait for conversion to finish
 	while (ADCSRA & (1u << ADSC))
 		;  							//	Wait for conversion to finish
-	//	Return read value
 	return (ADC);
 }
 
