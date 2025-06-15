@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   uart_tx.h                                          :+:      :+:    :+:   */
+/*   Uart.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 00:39:31 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/03/07 02:04:41 by fguarrac         ###   ########.fr       */
+/*   Created: 2025/05/20 20:29:08 by fguarrac          #+#    #+#             */
+/*   Updated: 2025/05/20 20:56:52 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UART_TX_H
-# define UART_TX_H
+#ifndef UART_HPP
+# define UART_HPP
 
 # include <avr/io.h>
 
-void	uart_tx(char c);
+class Uart
+{
+public:
+
+	Uart(void);
+	Uart(Uart const &);
+	Uart	&operator=(Uart const &);
+	~Uart(void);
+
+	void	init(void);
+	void	tx(char);
+	char	rx(void);
+	void	printstrnl(char const *);
+	void	printstr(char const *);
+	void	endl(void);
+};
 
 #endif
