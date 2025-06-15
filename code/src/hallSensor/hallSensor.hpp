@@ -6,7 +6,7 @@
 /*   By: fguarrac <fguarrac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:46:40 by fguarrac          #+#    #+#             */
-/*   Updated: 2025/06/15 01:12:57 by fguarrac         ###   ########.fr       */
+/*   Updated: 2025/06/15 15:12:59 by fguarrac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <avr/io.h>
 # include <util/delay.h>
-#include <avr/interrupt.h>
+# include <avr/interrupt.h>
 # include "Uart.hpp"
 
 # define _BV(bit)	(1 << (bit))
