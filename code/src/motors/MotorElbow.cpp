@@ -16,7 +16,8 @@ MotorElbow::MotorElbow() {
 	DDRB |= (1 << PB5);
 }
 
-MotorElbow::MotorElbow(MotorElbow const& m) {
+MotorElbow::MotorElbow(MotorElbow const& m) : Motor() {
+	(void)m;
 	MotorElbow();
 }
 
@@ -30,6 +31,7 @@ MotorElbow::~MotorElbow() {
 }
 
 MotorElbow& MotorElbow::operator=(MotorElbow const& m) {
+	(void)m;
 	return (*this);
 }
 

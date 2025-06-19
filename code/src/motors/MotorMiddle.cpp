@@ -16,7 +16,8 @@ MotorMiddle::MotorMiddle() {
 	DDRE |= (1 << PE3);
 }
 
-MotorMiddle::MotorMiddle(MotorMiddle const& m) {
+MotorMiddle::MotorMiddle(MotorMiddle const& m) : Motor() {
+	(void)m;
 	MotorMiddle();
 }
 
@@ -30,6 +31,7 @@ MotorMiddle::~MotorMiddle() {
 }
 
 MotorMiddle& MotorMiddle::operator=(MotorMiddle const& m) {
+	(void)m;
 	return (*this);
 }
 

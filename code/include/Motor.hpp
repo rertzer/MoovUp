@@ -11,7 +11,7 @@ class Motor {
    public:
 	Motor();
 	Motor(Motor const& m);
-	virtual ~Motor();
+	~Motor();
 	Motor& operator=(Motor const& m);
 
 	virtual uint16_t getPosition() = 0;

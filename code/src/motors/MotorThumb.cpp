@@ -16,7 +16,8 @@ MotorThumb::MotorThumb() {
 	DDRE |= (1 << PE4);
 }
 
-MotorThumb::MotorThumb(MotorThumb const& m) {
+MotorThumb::MotorThumb(MotorThumb const& m) : Motor() {
+	(void)m;
 	MotorThumb();
 }
 
@@ -30,6 +31,7 @@ MotorThumb::~MotorThumb() {
 }
 
 MotorThumb& MotorThumb::operator=(MotorThumb const& m) {
+	(void)m;
 	return (*this);
 }
 

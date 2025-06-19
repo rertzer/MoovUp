@@ -16,7 +16,8 @@ MotorShoulder::MotorShoulder() {
 	DDRB |= (1 << PB6);
 }
 
-MotorShoulder::MotorShoulder(MotorShoulder const& m) {
+MotorShoulder::MotorShoulder(MotorShoulder const& m) : Motor() {
+	(void)m;
 	MotorShoulder();
 }
 
@@ -30,6 +31,7 @@ MotorShoulder::~MotorShoulder() {
 }
 
 MotorShoulder& MotorShoulder::operator=(MotorShoulder const& m) {
+	(void)m;
 	return (*this);
 }
 

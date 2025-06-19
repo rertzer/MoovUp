@@ -12,56 +12,48 @@
 
 #include "hallSensor.hpp"
 
-
-Hall::Hall(uint8_t pin): _pin(pin)
-{
+Hall::Hall(uint8_t pin) : _pin(pin) {
 	this->_init();
 }
 
-Hall::Hall(Hall const &src): _pin(src.getPin())
-{
-	//this->_pin = src.getPin();
+Hall::Hall(Hall const& src) : _pin(src.getPin()) {
+	// this->_pin = src.getPin();
 }
 
-Hall	&Hall::operator=(Hall const &src)
-{
+Hall& Hall::operator=(Hall const& src) {
 	if (this != &src)
 		this->_pin = src.getPin();
 	return (*this);
 }
 
-Hall::~Hall(void)
-{
-}
+Hall::~Hall(void) {}
 
-uint8_t		Hall::getPin(void) const
-{
+uint8_t Hall::getPin(void) const {
 	return (this->_pin);
 }
 
-void		Hall::_init(void)
-{
+void Hall::_init(void) {
 	//	Set port
 	uint8_t bit = *g_pinToBit + this->_pin;
 	uint8_t port = *g_pinToPort + this->_pin;
 
-	uint8_t	*reg = (uint8_t *)(*g_portToMode + port);
-	uint8_t	*out = (uint8_t *)(*g_portToOutput + port);
+	uint8_t* reg = (uint8_t*)(*g_portToMode + port);
+	uint8_t* out = (uint8_t*)(*g_portToOutput + port);
 
 	uint8_t oldSREG = SREG;
-    cli();
+	cli();
 	*reg &= ~bit;
 	*out &= ~bit;
 	SREG = oldSREG;
 
 	//	Init ADC
-	uint8_t		pinTmp = this->_pin;
+	uint8_t pinTmp = this->_pin;
 	if (pinTmp >= 54)
 		pinTmp -= 54;
 
-//	//	Set port
-//	DDRF &= ~(1u << DDF0);	   //	Set pin A0 as input (Port F 0)
-//	PORTF &= ~(1u << PORTF0);  //	Disable pull up resistor
+	//	//	Set port
+	//	DDRF &= ~(1u << DDF0);	   //	Set pin A0 as input (Port F 0)
+	//	PORTF &= ~(1u << PORTF0);  //	Disable pull up resistor
 
 	//	Init ADC
 	ADMUX |= (1u << REFS0);	  //	Set AVcc as reference
@@ -74,38 +66,31 @@ void		Hall::_init(void)
 	ADCSRA |= (1u << ADSC);	 //	Start conversion
 	_delay_ms(10);			 //	First conversion may take some time
 	while (ADCSRA & (1u << ADSC))
-		;		 //	Wait for ADC to finish conversion
-	(void)ADC;	 //	Read conversion
+		;		//	Wait for ADC to finish conversion
+	(void)ADC;	//	Read conversion
 }
 
-uint16_t	Hall::readValue(void)
-{
-	//	Wait for some conversion to finish (ADIF in ADCSRA) or check ADSC in ADCSRA?	///	Some other finger already may be reading the ADC
+uint16_t Hall::readValue(void) {
+	//	Wait for some conversion to finish (ADIF in ADCSRA) or check ADSC in ADCSRA?	///	Some other finger already
+	// may be reading the ADC
 	while (!(ADCSRA & (1u << ADIF)))
-		;							//	Wait for conversion to finish
-//	while (ADCSRA & (1u << ADSC))
-//		;  							//	Wait for conversion to finish
+		;  //	Wait for conversion to finish
+		   //	while (ADCSRA & (1u << ADSC))
+		   //		;  							//	Wait for conversion to finish
 	//	Set ADC's input
-	if (this->_pin > 7)				//	If ADC input > ADC7
-		ADCSRB |= (1u << MUX5);		//	Set MUX5
-	ADMUX &= 0xF8;					//	Clear previous ADC input
-	ADMUX |= (this->_pin & 0x07);	//	Select new ADC input
+	if (this->_pin > 7)			   //	If ADC input > ADC7
+		ADCSRB |= (1u << MUX5);	   //	Set MUX5
+	ADMUX &= 0xF8;				   //	Clear previous ADC input
+	ADMUX |= (this->_pin & 0x07);  //	Select new ADC input
 	//	Start converson
-	ADCSRA |= (1u << ADSC);	 		//	Start conversion
+	ADCSRA |= (1u << ADSC);	 //	Start conversion
 	//	Wait for conversion to finish
 	while (ADCSRA & (1u << ADSC))
-		;  							//	Wait for conversion to finish
+		;  //	Wait for conversion to finish
 	//	Return read value
 	return (ADC);
 }
-
-
-
-
-
-
-
-
+/*
 static void ft_itoaptr(uint16_t conv, char* ptr) {
 	uint16_t convTmp;
 	uint8_t	 convLen;
@@ -169,3 +154,4 @@ int main(void) {
 		_delay_ms(20);
 	}
 }
+*/

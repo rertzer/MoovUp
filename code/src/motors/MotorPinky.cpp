@@ -16,7 +16,8 @@ MotorPinky::MotorPinky() {
 	DDRH |= (1 << PH4);
 }
 
-MotorPinky::MotorPinky(MotorPinky const& m) {
+MotorPinky::MotorPinky(MotorPinky const& m) : Motor() {
+	(void)m;
 	MotorPinky();
 }
 
@@ -30,6 +31,7 @@ MotorPinky::~MotorPinky() {
 }
 
 MotorPinky& MotorPinky::operator=(MotorPinky const& m) {
+	(void)m;
 	return (*this);
 }
 

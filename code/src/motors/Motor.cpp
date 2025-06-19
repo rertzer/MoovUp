@@ -1,10 +1,19 @@
 #include "Motor.hpp"
 #include <avr/io.h>
 
+extern "C" void __cxa_pure_virtual() {
+	while (42)
+		;
+}
+
 Motor::Motor() {}
-Motor::Motor(Motor const& m) {}
+Motor::Motor(Motor const& m) {
+	(void)m;
+}
 Motor::~Motor() {}
+
 Motor& Motor::operator=(Motor const& m) {
+	(void)m;
 	return (*this);
 }
 

@@ -16,7 +16,8 @@ MotorWrist::MotorWrist() {
 	DDRE |= (1 << PH5);
 }
 
-MotorWrist::MotorWrist(MotorWrist const& m) {
+MotorWrist::MotorWrist(MotorWrist const& m) : Motor() {
+	(void)m;
 	MotorWrist();
 }
 
@@ -30,6 +31,7 @@ MotorWrist::~MotorWrist() {
 }
 
 MotorWrist& MotorWrist::operator=(MotorWrist const& m) {
+	(void)m;
 	return (*this);
 }
 

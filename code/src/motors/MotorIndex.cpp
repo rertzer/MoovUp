@@ -16,7 +16,8 @@ MotorIndex::MotorIndex() {
 	DDRE |= (1 << PE5);
 }
 
-MotorIndex::MotorIndex(MotorIndex const& m) {
+MotorIndex::MotorIndex(MotorIndex const& m) : Motor() {
+	(void)m;
 	MotorIndex();
 }
 
@@ -30,6 +31,7 @@ MotorIndex::~MotorIndex() {
 }
 
 MotorIndex& MotorIndex::operator=(MotorIndex const& m) {
+	(void)m;
 	return (*this);
 }
 

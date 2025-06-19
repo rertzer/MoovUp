@@ -16,7 +16,8 @@ MotorRing::MotorRing() {
 	DDRH |= (1 << PH3);
 }
 
-MotorRing::MotorRing(MotorRing const& m) {
+MotorRing::MotorRing(MotorRing const& m) : Motor() {
+	(void)m;
 	MotorRing();
 }
 
@@ -30,6 +31,7 @@ MotorRing::~MotorRing() {
 }
 
 MotorRing& MotorRing::operator=(MotorRing const& m) {
+	(void)m;
 	return (*this);
 }
 
