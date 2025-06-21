@@ -44,6 +44,12 @@ SRCPP			= main.cpp \
 				motors/MotorWrist.cpp \
 				motors/MotorElbow.cpp \
 				motors/MotorShoulder.cpp \
+				arm/Index.cpp \
+				arm/Middle.cpp \
+				arm/Ring.cpp \
+				arm/Pinky.cpp \
+				arm/Shoulder.cpp \
+				arm/Wrist.cpp \
 				sensors/hallSensor.cpp \
 				uart/Uart.cpp
 
@@ -80,7 +86,7 @@ $(BIN_DIR)%.bin: $(SRC_DIR)%.cpp
 flash:
 	@killall screen 2> /dev/null || true
 	avrdude -c $(PROGRAMMER) -P $(PORT) -p $(PARTNO) -b $(B_RATE) -D "-Uflash:w:$(NAME).hex"
-		LANG=en_US gnome-terminal -- screen $(PORT) $(B_RATE)
+	gnome-terminal -- screen $(PORT)  $(B_RATE)
 
 clean:
 	rm -rfd $(BINS)

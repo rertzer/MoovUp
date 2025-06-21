@@ -13,7 +13,7 @@ MotorWrist::MotorWrist() {
 	OCR4C = 1500;
 
 	// set pin as output
-	DDRE |= (1 << PH5);
+	DDRH |= (1 << PH5);
 }
 
 MotorWrist::MotorWrist(MotorWrist const& m) : Motor() {

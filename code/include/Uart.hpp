@@ -11,25 +11,24 @@
 /* ************************************************************************** */
 
 #ifndef UART_HPP
-# define UART_HPP
+#define UART_HPP
 
-# include <avr/io.h>
+#include <avr/io.h>
 
-class Uart
-{
-public:
-
+class Uart {
+   public:
 	Uart(void);
-	Uart(Uart const &);
-	Uart	&operator=(Uart const &);
+	Uart(Uart const&);
+	Uart& operator=(Uart const&);
 	~Uart(void);
 
-	void	init(void);
-	void	tx(char);
-	char	rx(void);
-	void	printstrnl(char const *);
-	void	printstr(char const *);
-	void	endl(void);
+	void init(void);
+	void tx(char);
+	char rx(void);
+	void printstrnl(char const*);
+	void printstr(char const*);
+	void printNbr(uint16_t nb);
+	void endl(void);
 };
 
 #endif
