@@ -2,18 +2,19 @@
 #include "body.hpp"
 
 Ring::Ring() : motor(), sensor(2), pos_min(500), pos_max(2500), pos(0), target(0), speed(0), mode(MoveMode::POSITION) {}
-//
-// Ring::Ring(Ring const& i) {
-// 	*this = i;
-// }
+
+Ring::Ring(Ring const& r) : sensor(r.sensor.getPin()) {
+	*this = r;
+}
+
 Ring::~Ring() {}
 
-Ring& Ring::operator=(Ring const& i) {
-	if (this != &i) {
-		pos = i.pos;
-		target = i.target;
-		speed = i.speed;
-		mode = i.mode;
+Ring& Ring::operator=(Ring const& r) {
+	if (this != &r) {
+		pos = r.pos;
+		target = r.target;
+		speed = r.speed;
+		mode = r.mode;
 	}
 	return (*this);
 }

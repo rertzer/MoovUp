@@ -3,18 +3,19 @@
 
 Wrist::Wrist()
 	: motor(), sensor(2), pos_min(500), pos_max(2500), pos(0), target(0), speed(0), mode(MoveMode::POSITION) {}
-//
-// Wrist::Wrist(Wrist const& i) {
-// 	*this = i;
-// }
+
+Wrist::Wrist(Wrist const& w) : sensor(w.sensor.getPin()) {
+	*this = w;
+}
+
 Wrist::~Wrist() {}
 
-Wrist& Wrist::operator=(Wrist const& i) {
-	if (this != &i) {
-		pos = i.pos;
-		target = i.target;
-		speed = i.speed;
-		mode = i.mode;
+Wrist& Wrist::operator=(Wrist const& w) {
+	if (this != &w) {
+		pos = w.pos;
+		target = w.target;
+		speed = w.speed;
+		mode = w.mode;
 	}
 	return (*this);
 }

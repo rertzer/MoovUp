@@ -3,10 +3,11 @@
 
 Index::Index()
 	: motor(), sensor(2), pos_min(500), pos_max(2500), pos(0), target(0), speed(0), mode(MoveMode::POSITION) {}
-//
-// Index::Index(Index const& i) {
-// 	*this = i;
-// }
+
+Index::Index(Index const& i) : sensor(i.sensor.getPin()) {
+	*this = i;
+}
+
 Index::~Index() {}
 
 Index& Index::operator=(Index const& i) {

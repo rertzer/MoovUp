@@ -3,18 +3,19 @@
 
 Pinky::Pinky()
 	: motor(), sensor(2), pos_min(500), pos_max(2500), pos(0), target(0), speed(0), mode(MoveMode::POSITION) {}
-//
-// Pinky::Pinky(Pinky const& i) {
-// 	*this = i;
-// }
+
+Pinky::Pinky(Pinky const& p) : sensor(p.sensor.getPin()) {
+	*this = p;
+}
+
 Pinky::~Pinky() {}
 
-Pinky& Pinky::operator=(Pinky const& i) {
-	if (this != &i) {
-		pos = i.pos;
-		target = i.target;
-		speed = i.speed;
-		mode = i.mode;
+Pinky& Pinky::operator=(Pinky const& p) {
+	if (this != &p) {
+		pos = p.pos;
+		target = p.target;
+		speed = p.speed;
+		mode = p.mode;
 	}
 	return (*this);
 }

@@ -3,18 +3,19 @@
 
 Shoulder::Shoulder()
 	: motor(), sensor(2), pos_min(500), pos_max(1400), pos(0), target(1500), speed(0), mode(MoveMode::POSITION) {}
-//
-// Shoulder::Shoulder(Shoulder const& i) {
-// 	*this = i;
-// }
+
+Shoulder::Shoulder(Shoulder const& s) : sensor(s.sensor.getPin()) {
+	*this = s;
+}
+
 Shoulder::~Shoulder() {}
 
-Shoulder& Shoulder::operator=(Shoulder const& i) {
-	if (this != &i) {
-		pos = i.pos;
-		target = i.target;
-		speed = i.speed;
-		mode = i.mode;
+Shoulder& Shoulder::operator=(Shoulder const& s) {
+	if (this != &s) {
+		pos = s.pos;
+		target = s.target;
+		speed = s.speed;
+		mode = s.mode;
 	}
 	return (*this);
 }

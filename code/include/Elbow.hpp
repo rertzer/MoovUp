@@ -1,16 +1,16 @@
-#ifndef WRIST_HPP
-#define WRIST_HPP
+#ifndef ELBOW_HPP
+#define ELBOW_HPP
 
-#include "MotorWrist.hpp"
+#include "MotorElbow.hpp"
 #include "body.hpp"
 #include "hallSensor.hpp"
 
-class Wrist {
+class Elbow {
    public:
-	Wrist();
-	Wrist(Wrist const& m);
-	~Wrist();
-	Wrist& operator=(Wrist const& m);
+	Elbow();
+	Elbow(Elbow const& m);
+	~Elbow();
+	Elbow& operator=(Elbow const& m);
 
 	uint16_t getPosition();
 	uint16_t getTarget();
@@ -22,7 +22,7 @@ class Wrist {
 	void	 moveUp();
 
    private:
-	MotorWrist motor;
+	MotorElbow motor;
 	Hall	   sensor;
 	uint16_t   degre2pos(uint16_t deg);
 	uint16_t   pos2degre(uint16_t pos);

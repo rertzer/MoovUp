@@ -167,9 +167,7 @@ Hall::Hall(uint8_t pin) : _pin(pin) {
 	this->_init();
 }
 
-Hall::Hall(Hall const& src) : _pin(src.getPin()) {
-	// this->_pin = src.getPin();
-}
+Hall::Hall(Hall const& src) : _pin(src.getPin()) {}
 
 Hall& Hall::operator=(Hall const& src) {
 	if (this != &src)

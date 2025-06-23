@@ -1,26 +1,25 @@
-#include "Middle.hpp"
+#include "Thumb.hpp"
 #include "body.hpp"
 
-Middle::Middle()
+Thumb::Thumb()
 	: motor(), sensor(2), pos_min(500), pos_max(2500), pos(0), target(0), speed(0), mode(MoveMode::POSITION) {}
 
-Middle::Middle(Middle const& m) : sensor(m.sensor.getPin()) {
-	*this = m;
+Thumb::Thumb(Thumb const& t) : sensor(t.sensor.getPin()) {
+	*this = t;
 }
+Thumb::~Thumb() {}
 
-Middle::~Middle() {}
-
-Middle& Middle::operator=(Middle const& m) {
-	if (this != &m) {
-		pos = m.pos;
-		target = m.target;
-		speed = m.speed;
-		mode = m.mode;
+Thumb& Thumb::operator=(Thumb const& t) {
+	if (this != &t) {
+		pos = t.pos;
+		target = t.target;
+		speed = t.speed;
+		mode = t.mode;
 	}
 	return (*this);
 }
 
-uint16_t Middle::degre2pos(uint16_t deg) {
+uint16_t Thumb::degre2pos(uint16_t deg) {
 	uint16_t p = deg * 100 / 9;
 	p += 500;
 	if (p < pos_min) {
@@ -31,7 +30,7 @@ uint16_t Middle::degre2pos(uint16_t deg) {
 	return (p);
 }
 
-uint16_t Middle::pos2degre(uint16_t p) {
+uint16_t Thumb::pos2degre(uint16_t p) {
 	if (p < pos_min) {
 		p = pos_min;
 	} else if (p > pos_max) {
@@ -41,35 +40,35 @@ uint16_t Middle::pos2degre(uint16_t p) {
 	return (p * 9 / 100);
 }
 
-uint16_t Middle::getPosition() {
+uint16_t Thumb::getPosition() {
 	return (pos2degre(pos));
 }
 
-uint16_t Middle::getTarget() {
+uint16_t Thumb::getTarget() {
 	return (pos2degre(target));
 }
 
-void Middle::setTarget(uint16_t t) {
+void Thumb::setTarget(uint16_t t) {
 	target = degre2pos(t);
 }
 
-uint16_t Middle::getSpeed() {
+uint16_t Thumb::getSpeed() {
 	return (pos2degre(speed));
 }
 
-void Middle::setSpeed(uint16_t s) {
+void Thumb::setSpeed(uint16_t s) {
 	speed = degre2pos(s);
 }
 
-MoveMode Middle::getMode() {
+MoveMode Thumb::getMode() {
 	return (mode);
 }
 
-void Middle::setMode(MoveMode m) {
+void Thumb::setMode(MoveMode m) {
 	mode = m;
 }
 
-void Middle::moveUp() {
+void Thumb::moveUp() {
 	if (pos < target) {
 		pos += speed;
 		if (pos > target) {

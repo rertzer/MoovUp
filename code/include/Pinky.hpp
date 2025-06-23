@@ -5,11 +5,6 @@
 #include "body.hpp"
 #include "hallSensor.hpp"
 
-// extern uint8_t	g_pinToBit[];
-// extern uint8_t	g_pinToPort[];
-// extern uint16_t g_portToMode[];
-// extern uint16_t g_portToOutput[];
-
 class Pinky {
    public:
 	Pinky();

@@ -16,7 +16,6 @@
 #include <avr/interrupt.h>
 #include <avr/io.h>
 #include <util/delay.h>
-#include "Uart.hpp"
 
 #define _BV(bit) (1 << (bit))
 
@@ -55,6 +54,7 @@ extern uint8_t	g_pinToPort[];
 extern uint8_t	g_pinToBit[];
 extern uint16_t g_portToBit[];
 extern uint16_t g_portToOutput[];
+
 class Hall {
 	uint8_t _pin;
 
