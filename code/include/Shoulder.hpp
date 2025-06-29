@@ -2,7 +2,6 @@
 #define SHOULDER_HPP
 
 #include "MotorShoulder.hpp"
-#include "body.hpp"
 #include "hallSensor.hpp"
 
 class Shoulder {
@@ -17,8 +16,6 @@ class Shoulder {
 	void	 setTarget(uint16_t t);
 	uint16_t getSpeed();
 	void	 setSpeed(uint16_t s);
-	MoveMode getMode();
-	void	 setMode(MoveMode m);
 	void	 moveUp();
 
    private:
@@ -31,7 +28,6 @@ class Shoulder {
 	uint16_t	  pos;
 	uint16_t	  target;
 	uint16_t	  speed;
-	MoveMode	  mode;
 };
 
 #endif

@@ -2,7 +2,7 @@
 #define MIDDLE_HPP
 
 #include "MotorMiddle.hpp"
-#include "body.hpp"
+#include "arm.hpp"
 #include "hallSensor.hpp"
 
 class Middle {

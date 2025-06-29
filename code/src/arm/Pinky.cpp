@@ -1,5 +1,5 @@
 #include "Pinky.hpp"
-#include "body.hpp"
+#include "arm.hpp"
 
 Pinky::Pinky()
 	: motor(), sensor(2), pos_min(500), pos_max(2500), pos(0), target(0), speed(0), mode(MoveMode::POSITION) {}

@@ -2,7 +2,7 @@
 #define PINKY_HPP
 
 #include "MotorPinky.hpp"
-#include "body.hpp"
+#include "arm.hpp"
 #include "hallSensor.hpp"
 
 class Pinky {

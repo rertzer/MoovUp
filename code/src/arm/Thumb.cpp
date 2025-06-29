@@ -1,5 +1,5 @@
 #include "Thumb.hpp"
-#include "body.hpp"
+#include "arm.hpp"
 
 Thumb::Thumb()
 	: motor(), sensor(2), pos_min(500), pos_max(2500), pos(0), target(0), speed(0), mode(MoveMode::POSITION) {}

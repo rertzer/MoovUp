@@ -2,7 +2,6 @@
 #define ELBOW_HPP
 
 #include "MotorElbow.hpp"
-#include "body.hpp"
 #include "hallSensor.hpp"
 
 class Elbow {
@@ -17,8 +16,6 @@ class Elbow {
 	void	 setTarget(uint16_t t);
 	uint16_t getSpeed();
 	void	 setSpeed(uint16_t s);
-	MoveMode getMode();
-	void	 setMode(MoveMode m);
 	void	 moveUp();
 
    private:
@@ -31,7 +28,6 @@ class Elbow {
 	uint16_t   pos;
 	uint16_t   target;
 	uint16_t   speed;
-	MoveMode   mode;
 };
 
 #endif

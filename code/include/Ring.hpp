@@ -2,7 +2,7 @@
 #define RING_HPP
 
 #include "MotorRing.hpp"
-#include "body.hpp"
+#include "arm.hpp"
 #include "hallSensor.hpp"
 
 class Ring {

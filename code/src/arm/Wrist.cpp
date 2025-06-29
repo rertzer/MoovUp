@@ -1,8 +1,6 @@
 #include "Wrist.hpp"
-#include "body.hpp"
 
-Wrist::Wrist()
-	: motor(), sensor(2), pos_min(500), pos_max(2500), pos(0), target(0), speed(0), mode(MoveMode::POSITION) {}
+Wrist::Wrist() : motor(), sensor(2), pos_min(500), pos_max(2500), pos(0), target(0), speed(0) {}
 
 Wrist::Wrist(Wrist const& w) : sensor(w.sensor.getPin()) {
 	*this = w;
@@ -15,7 +13,6 @@ Wrist& Wrist::operator=(Wrist const& w) {
 		pos = w.pos;
 		target = w.target;
 		speed = w.speed;
-		mode = w.mode;
 	}
 	return (*this);
 }
@@ -59,14 +56,6 @@ uint16_t Wrist::getSpeed() {
 
 void Wrist::setSpeed(uint16_t s) {
 	speed = degre2pos(s);
-}
-
-MoveMode Wrist::getMode() {
-	return (mode);
-}
-
-void Wrist::setMode(MoveMode m) {
-	mode = m;
 }
 
 void Wrist::moveUp() {

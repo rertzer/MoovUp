@@ -2,7 +2,7 @@
 #define THUMB_HPP
 
 #include "MotorThumb.hpp"
-#include "body.hpp"
+#include "arm.hpp"
 #include "hallSensor.hpp"
 
 class Thumb {

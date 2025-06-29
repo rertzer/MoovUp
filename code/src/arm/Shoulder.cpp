@@ -1,8 +1,6 @@
 #include "Shoulder.hpp"
-#include "body.hpp"
 
-Shoulder::Shoulder()
-	: motor(), sensor(2), pos_min(500), pos_max(1400), pos(0), target(1500), speed(0), mode(MoveMode::POSITION) {}
+Shoulder::Shoulder() : motor(), sensor(2), pos_min(500), pos_max(1400), pos(0), target(1500), speed(0) {}
 
 Shoulder::Shoulder(Shoulder const& s) : sensor(s.sensor.getPin()) {
 	*this = s;
@@ -15,7 +13,6 @@ Shoulder& Shoulder::operator=(Shoulder const& s) {
 		pos = s.pos;
 		target = s.target;
 		speed = s.speed;
-		mode = s.mode;
 	}
 	return (*this);
 }
@@ -59,14 +56,6 @@ uint16_t Shoulder::getSpeed() {
 
 void Shoulder::setSpeed(uint16_t s) {
 	speed = degre2pos(s);
-}
-
-MoveMode Shoulder::getMode() {
-	return (mode);
-}
-
-void Shoulder::setMode(MoveMode m) {
-	mode = m;
 }
 
 void Shoulder::moveUp() {

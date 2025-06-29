@@ -1,8 +1,6 @@
 #include "Elbow.hpp"
-#include "body.hpp"
 
-Elbow::Elbow()
-	: motor(), sensor(2), pos_min(500), pos_max(2500), pos(0), target(0), speed(0), mode(MoveMode::POSITION) {}
+Elbow::Elbow() : motor(), sensor(2), pos_min(500), pos_max(2500), pos(0), target(0), speed(0) {}
 
 Elbow::Elbow(Elbow const& e) : sensor(e.sensor.getPin()) {
 	*this = e;
@@ -14,7 +12,6 @@ Elbow& Elbow::operator=(Elbow const& i) {
 		pos = i.pos;
 		target = i.target;
 		speed = i.speed;
-		mode = i.mode;
 	}
 	return (*this);
 }
@@ -58,14 +55,6 @@ uint16_t Elbow::getSpeed() {
 
 void Elbow::setSpeed(uint16_t s) {
 	speed = degre2pos(s);
-}
-
-MoveMode Elbow::getMode() {
-	return (mode);
-}
-
-void Elbow::setMode(MoveMode m) {
-	mode = m;
 }
 
 void Elbow::moveUp() {

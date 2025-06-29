@@ -32,31 +32,27 @@ int main() {
 	ring.setSpeed(10);
 	pinky.setSpeed(12);
 	wrist.setSpeed(10);
-	// MotorShoulder shoulder;
-	// MotorWrist	  wrist;
-	// MotorMiddle	  middle;
-	// MotorPinky	  pinky;
-	// MotorRing	  ring;
-	// MotorThumb	  thumb;
-	// MotorIndex	  index;
+
 	uint16_t pos = 0;  // 1000;
 
 	_delay_ms(1000);
 
-	index.setTarget(60);
-	middle.setTarget(120);
-	ring.setTarget(120);
-	pinky.setTarget(140);
+	index.setTarget(180);
+	middle.setTarget(0);
+	ring.setTarget(0);
+	pinky.setTarget(0);
 	wrist.setTarget(0);
-	shoulder.setTarget(0);
+	shoulder.setTarget(150);
 
 	while (42) {
-		uart.printstrnl("run...");
+		uart.printstr("run... ");
+		uart.printNbr(pos);
+		uart.printstrnl("");
 		// index.setTarget(pos);
-		// middle.setTarget(pos);
+		// middle.setTar5et(pos);
 		// ring.setTarget(pos);
 		// pinky.setTarget(pos);
-		shoulder.setTarget(pos);
+		// shoulder.setTarget(pos);
 		// wrist.setTarget(pos);
 		index.moveUp();
 		middle.moveUp();
@@ -79,10 +75,7 @@ int main() {
 			}
 		}
 
-		uart.printNbr(index.getTarget());
-		uart.printstrnl("");
-
 		_delay_ms(60);
 	}
 	return (0);
-}
+};

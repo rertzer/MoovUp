@@ -44,6 +44,7 @@ SRCPP			= main.cpp \
 				motors/MotorWrist.cpp \
 				motors/MotorElbow.cpp \
 				motors/MotorShoulder.cpp \
+				arm/Finger.cpp \
 				arm/Thumb.cpp \
 				arm/Index.cpp \
 				arm/Middle.cpp \
