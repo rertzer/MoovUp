@@ -1,6 +1,5 @@
 #include "Index.hpp"
 #include "Finger.hpp"
-#include "arm.hpp"
 
 Index::Index() : Finger(2, 500, 2500), motor() {}
 

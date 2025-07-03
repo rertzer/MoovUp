@@ -2,63 +2,33 @@
 #include "arm.hpp"
 
 Finger::Finger(uint8_t sensor_pin, uint16_t p_min, uint16_t p_max)
-	: sensor(sensor_pin), pos_min(p_min), pos_max(p_max), pos(0), target(0), speed(0), mode(MoveMode::POSITION) {}
+	: Joint(p_min, p_max), sensor(sensor_pin), pressure_target(0), mode(MoveMode::POSITION) {}
 
-Finger::Finger(Finger const& i) : sensor(i.sensor.getPin()) {
-	*this = i;
+Finger::Finger(Finger const& f) : Joint(f.pos_min, f.pos_max), sensor(f.sensor.getPin()) {
+	*this = f;
 }
 
 Finger::~Finger() {}
 
-Finger& Finger::operator=(Finger const& i) {
-	if (this != &i) {
-		pos = i.pos;
-		target = i.target;
-		speed = i.speed;
-		mode = i.mode;
+Finger& Finger::operator=(Finger const& f) {
+	if (this != &f) {
+		pos = f.pos;
+		pos_min = f.pos_min;
+		pos_max = f.pos_max;
+		target = f.target;
+		pressure_target = f.pressure_target;
+		speed = f.speed;
+		mode = f.mode;
 	}
 	return (*this);
 }
 
-uint16_t Finger::degre2pos(uint16_t deg) {
-	uint16_t p = deg * 100 / 9;
-	p += 500;
-	if (p < pos_min) {
-		p = pos_min;
-	} else if (p > pos_max) {
-		p = pos_max;
-	}
-	return (p);
+uint16_t Finger::getPressureTarget() {
+	return (pressure_target);
 }
 
-uint16_t Finger::pos2degre(uint16_t p) {
-	if (p < pos_min) {
-		p = pos_min;
-	} else if (p > pos_max) {
-		p = pos_max;
-	}
-	p -= 500;
-	return (p * 9 / 100);
-}
-
-uint16_t Finger::getPosition() {
-	return (pos2degre(pos));
-}
-
-uint16_t Finger::getTarget() {
-	return (pos2degre(target));
-}
-
-void Finger::setTarget(uint16_t t) {
-	target = degre2pos(t);
-}
-
-uint16_t Finger::getSpeed() {
-	return (pos2degre(speed));
-}
-
-void Finger::setSpeed(uint16_t s) {
-	speed = degre2pos(s);
+void Finger::setPressureTarget(uint16_t p) {
+	pressure_target = p;
 }
 
 MoveMode Finger::getMode() {
@@ -67,18 +37,4 @@ MoveMode Finger::getMode() {
 
 void Finger::setMode(MoveMode m) {
 	mode = m;
-}
-
-void Finger::updatePos() {
-	if (pos < target) {
-		pos += speed;
-		if (pos > target) {
-			pos = target;
-		}
-	} else if (pos > target) {
-		pos -= speed;
-		if (pos < target) {
-			pos = target;
-		}
-	}
 }
