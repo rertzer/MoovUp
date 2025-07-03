@@ -80,7 +80,7 @@ $(BIN_DIR)%.bin: $(SRC_DIR)%.cpp
 flash:
 	@killall screen 2> /dev/null || true
 	avrdude -c $(PROGRAMMER) -P $(PORT) -p $(PARTNO) -b $(B_RATE) -D "-Uflash:w:$(NAME).hex"
-		LANG=en_US gnome-terminal -- screen $(PORT) $(B_RATE)
+	gnome-terminal -- screen $(PORT) $(B_RATE)
 
 clean:
 	rm -rfd $(BINS)
