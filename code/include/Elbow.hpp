@@ -1,0 +1,33 @@
+#ifndef ELBOW_HPP
+#define ELBOW_HPP
+
+#include "MotorElbow.hpp"
+#include "hallSensor.hpp"
+
+class Elbow {
+   public:
+	Elbow();
+	Elbow(Elbow const& m);
+	~Elbow();
+	Elbow& operator=(Elbow const& m);
+
+	uint16_t getPosition();
+	uint16_t getTarget();
+	void	 setTarget(uint16_t t);
+	uint16_t getSpeed();
+	void	 setSpeed(uint16_t s);
+	void	 moveUp();
+
+   private:
+	MotorElbow motor;
+	Hall	   sensor;
+	uint16_t   degre2pos(uint16_t deg);
+	uint16_t   pos2degre(uint16_t pos);
+	uint16_t   pos_min;
+	uint16_t   pos_max;
+	uint16_t   pos;
+	uint16_t   target;
+	uint16_t   speed;
+};
+
+#endif
