@@ -14,7 +14,7 @@ NAME 		= lamain
 
 MAKE 		=	make
 CXX			=	avr-g++
-CXXFLAGS	=	-Wall -Wextra -Werror
+CXXFLAGS	=	-Wall -Wextra -Werror -std=gnu++11
 MMCU		=	atmega2560
 RM			=	$(shell which rm)
 
@@ -47,6 +47,7 @@ SRCPP			= main.cpp \
 				arm/Finger.cpp \
 				arm/Thumb.cpp \
 				arm/Index.cpp \
+				arm/Joint.cpp \
 				arm/Middle.cpp \
 				arm/Ring.cpp \
 				arm/Pinky.cpp \
