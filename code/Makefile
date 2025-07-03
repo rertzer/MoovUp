@@ -98,9 +98,12 @@ clean:
 	rm -rfd $(BIN_PATHS)
 	rm -rfd $(BIN_DIR)
 
+fclean: clean
+	rm -rf $(NAME).hex
+
 re:	clean
 	@$(MAKE) --no-print-directory
 
 -include $(DEPS)
 
-.PHONY: all clean flash re 
+.PHONY: all clean fclean flash re 
