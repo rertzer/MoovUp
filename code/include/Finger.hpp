@@ -13,9 +13,9 @@ class Finger : public Joint {
 	~Finger();
 	Finger& operator=(Finger const& m);
 
-	uint16_t	 getPressureTarget();
+	uint16_t	 getPressureTarget() const;
 	void		 setPressureTarget(uint16_t p);
-	MoveMode	 getMode();
+	MoveMode	 getMode() const;
 	void		 setMode(MoveMode m);
 	virtual void moveUp() = 0;
 

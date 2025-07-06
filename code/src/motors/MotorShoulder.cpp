@@ -35,7 +35,7 @@ MotorShoulder& MotorShoulder::operator=(MotorShoulder const& m) {
 	return (*this);
 }
 
-uint16_t MotorShoulder::getPosition() {
+uint16_t MotorShoulder::getPosition() const {
 	return ((uint16_t)OCR1B);
 }
 

@@ -10,7 +10,7 @@ class MotorIndex : public Motor {
 	~MotorIndex();
 	MotorIndex& operator=(MotorIndex const& m);
 
-	uint16_t getPosition();
+	uint16_t getPosition() const;
 	void	 setPosition(uint16_t pos);
 
    private:

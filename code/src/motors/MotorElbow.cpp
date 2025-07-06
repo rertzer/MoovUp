@@ -35,7 +35,7 @@ MotorElbow& MotorElbow::operator=(MotorElbow const& m) {
 	return (*this);
 }
 
-uint16_t MotorElbow::getPosition() {
+uint16_t MotorElbow::getPosition() const {
 	return ((uint16_t)OCR1A);
 }
 

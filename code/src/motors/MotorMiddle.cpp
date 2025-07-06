@@ -35,7 +35,7 @@ MotorMiddle& MotorMiddle::operator=(MotorMiddle const& m) {
 	return (*this);
 }
 
-uint16_t MotorMiddle::getPosition() {
+uint16_t MotorMiddle::getPosition() const {
 	return ((uint16_t)OCR3A);
 }
 

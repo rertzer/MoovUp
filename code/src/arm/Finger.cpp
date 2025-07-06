@@ -19,7 +19,7 @@ Finger& Finger::operator=(Finger const& f) {
 	return (*this);
 }
 
-uint16_t Finger::getPressureTarget() {
+uint16_t Finger::getPressureTarget() const {
 	return (pressure_target);
 }
 
@@ -27,7 +27,7 @@ void Finger::setPressureTarget(uint16_t p) {
 	pressure_target = p;
 }
 
-MoveMode Finger::getMode() {
+MoveMode Finger::getMode() const {
 	return (mode);
 }
 

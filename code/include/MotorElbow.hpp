@@ -10,7 +10,7 @@ class MotorElbow : public Motor {
 	~MotorElbow();
 	MotorElbow& operator=(MotorElbow const& m);
 
-	uint16_t getPosition();
+	uint16_t getPosition() const;
 	void	 setPosition(uint16_t pos);
 
    private:

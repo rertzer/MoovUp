@@ -35,7 +35,7 @@ MotorWrist& MotorWrist::operator=(MotorWrist const& m) {
 	return (*this);
 }
 
-uint16_t MotorWrist::getPosition() {
+uint16_t MotorWrist::getPosition() const {
 	return ((uint16_t)OCR4C);
 }
 

@@ -10,16 +10,16 @@ class Joint {
 	~Joint();
 	Joint& operator=(Joint const& m);
 
-	uint16_t	 getPosition();
-	uint16_t	 getTarget();
+	uint16_t	 getPosition() const;
+	uint16_t	 getTarget() const;
 	void		 setTarget(uint16_t t);
-	uint16_t	 getSpeed();
+	uint16_t	 getSpeed() const;
 	void		 setSpeed(uint16_t s);
 	virtual void moveUp() = 0;
 
    protected:
-	uint16_t degre2pos(uint16_t deg);
-	uint16_t pos2degre(uint16_t pos);
+	uint16_t degre2pos(uint16_t deg) const;
+	uint16_t pos2degre(uint16_t pos) const;
 	void	 updatePos();
 	uint16_t pos_min;
 	uint16_t pos_max;

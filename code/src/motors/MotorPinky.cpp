@@ -35,7 +35,7 @@ MotorPinky& MotorPinky::operator=(MotorPinky const& m) {
 	return (*this);
 }
 
-uint16_t MotorPinky::getPosition() {
+uint16_t MotorPinky::getPosition() const {
 	return ((uint16_t)OCR4B);
 }
 

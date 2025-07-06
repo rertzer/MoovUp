@@ -14,7 +14,7 @@ class Motor {
 	~Motor();
 	Motor& operator=(Motor const& m);
 
-	virtual uint16_t getPosition() = 0;
+	virtual uint16_t getPosition() const = 0;
 	virtual void	 setPosition(uint16_t pos) = 0;
 
 	static void MotorsInit();

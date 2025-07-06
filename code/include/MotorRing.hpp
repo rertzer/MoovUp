@@ -10,7 +10,7 @@ class MotorRing : public Motor {
 	~MotorRing();
 	MotorRing& operator=(MotorRing const& m);
 
-	uint16_t getPosition();
+	uint16_t getPosition() const;
 	void	 setPosition(uint16_t pos);
 
    private:

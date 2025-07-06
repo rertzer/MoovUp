@@ -19,7 +19,7 @@ Joint& Joint::operator=(Joint const& j) {
 	return (*this);
 }
 
-uint16_t Joint::degre2pos(uint16_t deg) {
+uint16_t Joint::degre2pos(uint16_t deg) const {
 	uint16_t p = deg * 100 / 9;
 	p += 500;
 	if (p < pos_min) {
@@ -30,7 +30,7 @@ uint16_t Joint::degre2pos(uint16_t deg) {
 	return (p);
 }
 
-uint16_t Joint::pos2degre(uint16_t p) {
+uint16_t Joint::pos2degre(uint16_t p) const {
 	if (p < pos_min) {
 		p = pos_min;
 	} else if (p > pos_max) {
@@ -40,11 +40,11 @@ uint16_t Joint::pos2degre(uint16_t p) {
 	return (p * 9 / 100);
 }
 
-uint16_t Joint::getPosition() {
+uint16_t Joint::getPosition() const {
 	return (pos2degre(pos));
 }
 
-uint16_t Joint::getTarget() {
+uint16_t Joint::getTarget() const {
 	return (pos2degre(target));
 }
 
@@ -52,7 +52,7 @@ void Joint::setTarget(uint16_t t) {
 	target = degre2pos(t);
 }
 
-uint16_t Joint::getSpeed() {
+uint16_t Joint::getSpeed() const {
 	return (pos2degre(speed));
 }
 

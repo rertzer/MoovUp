@@ -35,7 +35,7 @@ MotorThumb& MotorThumb::operator=(MotorThumb const& m) {
 	return (*this);
 }
 
-uint16_t MotorThumb::getPosition() {
+uint16_t MotorThumb::getPosition() const {
 	return ((uint16_t)OCR3B);
 }
 

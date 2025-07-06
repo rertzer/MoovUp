@@ -35,7 +35,7 @@ MotorIndex& MotorIndex::operator=(MotorIndex const& m) {
 	return (*this);
 }
 
-uint16_t MotorIndex::getPosition() {
+uint16_t MotorIndex::getPosition() const {
 	return ((uint16_t)OCR3C);
 }
 

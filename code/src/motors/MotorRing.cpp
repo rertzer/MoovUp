@@ -35,7 +35,7 @@ MotorRing& MotorRing::operator=(MotorRing const& m) {
 	return (*this);
 }
 
-uint16_t MotorRing::getPosition() {
+uint16_t MotorRing::getPosition() const {
 	return ((uint16_t)OCR4A);
 }
 
