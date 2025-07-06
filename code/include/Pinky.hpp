@@ -13,7 +13,10 @@ class Pinky : public Finger {
 	void   moveUp();
 
    private:
-	MotorPinky motor;
+	MotorPinky			  motor;
+	static const uint8_t  sensor_pin;
+	static const uint16_t pinky_pos_min;
+	static const uint16_t pinky_pos_max;
 };
 
 #endif

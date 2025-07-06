@@ -12,12 +12,9 @@ Finger::~Finger() {}
 
 Finger& Finger::operator=(Finger const& f) {
 	if (this != &f) {
-		pos = f.pos;
-		pos_min = f.pos_min;
-		pos_max = f.pos_max;
-		target = f.target;
+		Joint::operator=(f);
+		sensor = f.sensor;
 		pressure_target = f.pressure_target;
-		speed = f.speed;
 		mode = f.mode;
 	}
 	return (*this);

@@ -14,7 +14,9 @@ class Elbow : public Joint {
 	void moveUp();
 
    private:
-	MotorElbow motor;
+	MotorElbow			  motor;
+	static const uint16_t elbow_pos_min;
+	static const uint16_t elbow_pos_max;
 };
 
 #endif

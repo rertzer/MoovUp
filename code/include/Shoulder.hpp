@@ -14,7 +14,9 @@ class Shoulder : public Joint {
 	void moveUp();
 
    private:
-	MotorShoulder motor;
+	MotorShoulder		  motor;
+	static const uint16_t shoulder_pos_min;
+	static const uint16_t shoulder_pos_max;
 };
 
 #endif

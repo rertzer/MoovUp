@@ -10,6 +10,8 @@ Joint::~Joint() {}
 
 Joint& Joint::operator=(Joint const& j) {
 	if (this != &j) {
+		pos_min = j.pos_min;
+		pos_max = j.pos_max;
 		pos = j.pos;
 		target = j.target;
 		speed = j.speed;

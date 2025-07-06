@@ -16,7 +16,10 @@ class Thumb : public Finger {
 	void	 moveUp();
 
    private:
-	MotorThumb motor;
+	MotorThumb			  motor;
+	static const uint8_t  sensor_pin;
+	static const uint16_t thumb_pos_min;
+	static const uint16_t thumb_pos_max;
 };
 
 #endif

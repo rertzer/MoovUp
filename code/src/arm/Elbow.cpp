@@ -1,6 +1,6 @@
 #include "Elbow.hpp"
 
-Elbow::Elbow() : Joint(500, 2500), motor() {}
+Elbow::Elbow() : Joint(elbow_pos_min, elbow_pos_max), motor() {}
 
 Elbow::Elbow(Elbow const& e) : Joint(e.pos_min, e.pos_max) {
 	*this = e;
@@ -9,24 +9,15 @@ Elbow::~Elbow() {}
 
 Elbow& Elbow::operator=(Elbow const& e) {
 	if (this != &e) {
-		pos = e.pos;
-		target = e.target;
-		speed = e.speed;
+		Joint::operator=(e);
+		motor = e.motor;
 	}
 	return (*this);
 }
 
 void Elbow::moveUp() {
-	if (pos < target) {
-		pos += speed;
-		if (pos > target) {
-			pos = target;
-		}
-	} else if (pos > target) {
-		pos -= speed;
-		if (pos < target) {
-			pos = target;
-		}
-	}
+	updatePos();
 	motor.setPosition(pos);
 }
+const uint16_t Elbow::elbow_pos_min = 500;
+const uint16_t Elbow::elbow_pos_max = 2500;

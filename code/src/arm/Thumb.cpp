@@ -1,6 +1,6 @@
 #include "Thumb.hpp"
 
-Thumb::Thumb() : Finger(1, 500, 2500), motor() {}
+Thumb::Thumb() : Finger(sensor_pin, thumb_pos_min, thumb_pos_max), motor() {}
 
 Thumb::Thumb(Thumb const& t) : Finger(t.sensor.getPin(), t.pos_min, t.pos_max) {
 	*this = t;
@@ -9,12 +9,8 @@ Thumb::~Thumb() {}
 
 Thumb& Thumb::operator=(Thumb const& t) {
 	if (this != &t) {
-		pos_min = t.pos_min;
-		pos_max = t.pos_max;
-		pos = t.pos;
-		target = t.target;
-		speed = t.speed;
-		mode = t.mode;
+		Finger::operator=(t);
+		motor = t.motor;
 	}
 	return (*this);
 }
@@ -36,16 +32,10 @@ uint16_t Thumb::pos2degre(uint16_t p) {
 }
 
 void Thumb::moveUp() {
-	if (pos < target) {
-		pos += speed;
-		if (pos > target) {
-			pos = target;
-		}
-	} else if (pos > target) {
-		pos -= speed;
-		if (pos < target) {
-			pos = target;
-		}
-	}
+	updatePos();
 	motor.setPosition(pos);
 }
+
+const uint8_t  Thumb::sensor_pin = 1;
+const uint16_t Thumb::thumb_pos_min = 500;
+const uint16_t Thumb::thumb_pos_max = 2500;

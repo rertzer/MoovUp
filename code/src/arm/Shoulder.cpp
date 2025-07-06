@@ -1,6 +1,6 @@
 #include "Shoulder.hpp"
 
-Shoulder::Shoulder() : Joint(500, 1400), motor() {}
+Shoulder::Shoulder() : Joint(shoulder_pos_min, shoulder_pos_max), motor() {}
 
 Shoulder::Shoulder(Shoulder const& s) : Joint(s.pos_min, s.pos_max) {
 	*this = s;
@@ -10,26 +10,15 @@ Shoulder::~Shoulder() {}
 
 Shoulder& Shoulder::operator=(Shoulder const& s) {
 	if (this != &s) {
-		pos_min = s.pos_min;
-		pos_max = s.pos_max;
-		pos = s.pos;
-		target = s.target;
-		speed = s.speed;
+		Joint::operator=(s);
+		motor = s.motor;
 	}
 	return (*this);
 }
 
 void Shoulder::moveUp() {
-	if (pos < target) {
-		pos += speed;
-		if (pos > target) {
-			pos = target;
-		}
-	} else if (pos > target) {
-		pos -= speed;
-		if (pos < target) {
-			pos = target;
-		}
-	}
+	updatePos();
 	motor.setPosition(pos);
 }
+const uint16_t Shoulder::shoulder_pos_min = 500;
+const uint16_t Shoulder::shoulder_pos_max = 1400;

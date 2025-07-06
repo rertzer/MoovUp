@@ -14,7 +14,9 @@ class Wrist : public Joint {
 	void moveUp();
 
    private:
-	MotorWrist motor;
+	MotorWrist			  motor;
+	static const uint16_t wrist_pos_min;
+	static const uint16_t wrist_pos_max;
 };
 
 #endif
