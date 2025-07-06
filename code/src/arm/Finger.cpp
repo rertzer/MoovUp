@@ -1,5 +1,4 @@
 #include "Finger.hpp"
-#include "arm.hpp"
 
 Finger::Finger(uint8_t sensor_pin, uint16_t p_min, uint16_t p_max)
 	: Joint(p_min, p_max), sensor(sensor_pin), pressure_target(0), mode(MoveMode::POSITION) {}

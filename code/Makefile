@@ -31,7 +31,7 @@ DEBUG		=
 
 SRC_DIR		= src/
 BIN_DIR		= bin/
-SUB_DIRS    = sensors/, motors/, arm/, uart/
+SUB_DIRS    = sensors/, motors/, arm/, uart/, utils/
 BIN_PATHS = $(addprefix $(BIN_DIR), $(SUB_DIRS))
 
 SRCPP			= main.cpp \
@@ -44,6 +44,7 @@ SRCPP			= main.cpp \
 				motors/MotorWrist.cpp \
 				motors/MotorElbow.cpp \
 				motors/MotorShoulder.cpp \
+				arm/Arm.cpp \
 				arm/Finger.cpp \
 				arm/Thumb.cpp \
 				arm/Index.cpp \
@@ -55,7 +56,8 @@ SRCPP			= main.cpp \
 				arm/Shoulder.cpp \
 				arm/Wrist.cpp \
 				sensors/hallSensor.cpp \
-				uart/Uart.cpp
+				uart/Uart.cpp \
+				utils/ft_itoa.cpp
 
 
 HEADER		= main.hpp

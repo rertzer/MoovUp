@@ -2,8 +2,9 @@
 #define FINGER_HPP
 
 #include "Joint.hpp"
-#include "arm.hpp"
 #include "hallSensor.hpp"
+
+enum class MoveMode { POSITION, PRESSURE };
 
 class Finger : public Joint {
    public:
