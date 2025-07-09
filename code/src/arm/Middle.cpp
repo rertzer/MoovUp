@@ -1,8 +1,8 @@
 #include "Middle.hpp"
 
-Middle::Middle() : Finger(sensor_pin, middle_pos_min, middle_pos_max), motor() {}
+Middle::Middle() : Finger(sensor_pin, middle_pos_min, middle_pos_max, inverted), motor() {}
 
-Middle::Middle(Middle const& m) : Finger(m.sensor.getPin(), m.pos_min, m.pos_max) {
+Middle::Middle(Middle const& m) : Finger(m.sensor.getPin(), m.pos_min, m.pos_max, m.motor_inverted) {
 	*this = m;
 }
 
@@ -24,3 +24,4 @@ void Middle::moveUp() {
 const uint8_t  Middle::sensor_pin = 3;
 const uint16_t Middle::middle_pos_min = 500;
 const uint16_t Middle::middle_pos_max = 2500;
+const bool	   Middle::inverted = false;

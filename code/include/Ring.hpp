@@ -18,6 +18,7 @@ class Ring : public Finger {
 	static const uint8_t  sensor_pin;
 	static const uint16_t ring_pos_min;
 	static const uint16_t ring_pos_max;
+	static const bool	  inverted;
 };
 
 #endif

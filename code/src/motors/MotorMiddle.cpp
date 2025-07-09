@@ -1,4 +1,7 @@
 #include "MotorMiddle.hpp"
+#include "Uart.hpp"
+
+extern Uart uart;
 
 /* For Arduino Mega, ATmega2560
  * using timer OC3A and pin D5 (PE3)
@@ -40,5 +43,7 @@ uint16_t MotorMiddle::getPosition() const {
 }
 
 void MotorMiddle::setPosition(uint16_t pos) {
+	uart.printNbr(pos);
+	uart.printstrnl(" middle");
 	OCR3A = pos;
 }

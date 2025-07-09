@@ -1,6 +1,10 @@
 #include "Joint.hpp"
+#include "Uart.hpp"
 
-Joint::Joint(uint16_t p_min, uint16_t p_max) : pos_min(p_min), pos_max(p_max), pos(0), target(0), speed(0) {}
+extern Uart uart;
+
+Joint::Joint(uint16_t p_min, uint16_t p_max, bool mi)
+	: pos_min(p_min), pos_max(p_max), pos(p_min), target(p_max), speed(0), motor_inverted(mi) {}
 
 Joint::Joint(Joint const& j) {
 	*this = j;
@@ -15,12 +19,17 @@ Joint& Joint::operator=(Joint const& j) {
 		pos = j.pos;
 		target = j.target;
 		speed = j.speed;
+		motor_inverted = j.motor_inverted;
 	}
 	return (*this);
 }
 
 uint16_t Joint::degre2pos(uint16_t deg) const {
-	uint16_t p = deg * 100 / 9;
+	if (motor_inverted) {
+		deg = 180 - deg;
+	}
+	uint16_t p = deg * 100;
+	p /= 9;
 	p += 500;
 	if (p < pos_min) {
 		p = pos_min;
@@ -29,15 +38,17 @@ uint16_t Joint::degre2pos(uint16_t deg) const {
 	}
 	return (p);
 }
-
 uint16_t Joint::pos2degre(uint16_t p) const {
 	if (p < pos_min) {
 		p = pos_min;
 	} else if (p > pos_max) {
 		p = pos_max;
 	}
-	p -= 500;
-	return (p * 9 / 100);
+	p = (p - 500) * 9 / 100;
+	if (motor_inverted) {
+		p = 180 - p;
+	}
+	return (p);
 }
 
 uint16_t Joint::getPosition() const {
@@ -53,11 +64,11 @@ void Joint::setTarget(uint16_t t) {
 }
 
 uint16_t Joint::getSpeed() const {
-	return (pos2degre(speed));
+	return (speed);
 }
 
 void Joint::setSpeed(uint16_t s) {
-	speed = degre2pos(s);
+	speed = s;
 }
 
 void Joint::updatePos() {

@@ -68,7 +68,7 @@ class Hall {
 
 	uint8_t getPin(void) const;
 
-	uint16_t readValue(void);
+	uint16_t readValue(void) const;
 };
 
 #endif

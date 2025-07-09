@@ -219,7 +219,7 @@ void Hall::_init(void) {
 	(void)ADC;	//	Read conversion
 }
 
-uint16_t Hall::readValue(void) {
+uint16_t Hall::readValue(void) const {
 	//	Wait for some conversion to finish (ADIF in ADCSRA) or check ADSC in ADCSRA?	///	Some other finger already
 	// may be reading the ADC
 	while (!(ADCSRA & (1u << ADIF)))

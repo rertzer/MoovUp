@@ -17,6 +17,7 @@ class Shoulder : public Joint {
 	MotorShoulder		  motor;
 	static const uint16_t shoulder_pos_min;
 	static const uint16_t shoulder_pos_max;
+	static const bool	  inverted;
 };
 
 #endif

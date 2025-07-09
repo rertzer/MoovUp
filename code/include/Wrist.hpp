@@ -17,6 +17,7 @@ class Wrist : public Joint {
 	MotorWrist			  motor;
 	static const uint16_t wrist_pos_min;
 	static const uint16_t wrist_pos_max;
+	static const bool	  inverted;
 };
 
 #endif

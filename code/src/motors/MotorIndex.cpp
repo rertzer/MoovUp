@@ -1,4 +1,7 @@
 #include "MotorIndex.hpp"
+#include "Uart.hpp"
+
+extern Uart uart;
 
 /* For Arduino Mega, ATmega2560
  * using timer OC3C and pin D3 (PE5)
@@ -40,5 +43,7 @@ uint16_t MotorIndex::getPosition() const {
 }
 
 void MotorIndex::setPosition(uint16_t pos) {
+	uart.printNbr(pos);
+	uart.printstrnl(" index");
 	OCR3C = pos;
 }

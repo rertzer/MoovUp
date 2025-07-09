@@ -5,7 +5,7 @@
 
 class Joint {
    public:
-	Joint(uint16_t pos_min, uint16_t pos_max);
+	Joint(uint16_t pos_min, uint16_t pos_max, bool mi);
 	Joint(Joint const& m);
 	~Joint();
 	Joint& operator=(Joint const& m);
@@ -26,6 +26,7 @@ class Joint {
 	uint16_t pos;
 	uint16_t target;
 	uint16_t speed;
+	bool	 motor_inverted;
 };
 
 #endif
