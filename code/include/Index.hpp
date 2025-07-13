@@ -11,7 +11,8 @@ class Index : public Finger {
 	~Index();
 	Index& operator=(Index const& m);
 
-	void moveUp();
+	void move();
+	void reset();
 
    private:
 	MotorIndex				   motor;

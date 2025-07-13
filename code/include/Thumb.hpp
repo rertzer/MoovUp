@@ -11,7 +11,8 @@ class Thumb : public Finger {
 	~Thumb();
 	Thumb& operator=(Thumb const& m);
 
-	void moveUp();
+	void move();
+	void reset();
 
    private:
 	MotorThumb				   motor;

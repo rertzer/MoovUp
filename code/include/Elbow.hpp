@@ -11,7 +11,8 @@ class Elbow : public Joint {
 	~Elbow();
 	Elbow& operator=(Elbow const& m);
 
-	void moveUp();
+	void move();
+	void reset();
 
    private:
 	MotorElbow						  motor;

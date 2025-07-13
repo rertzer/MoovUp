@@ -22,7 +22,7 @@ class Joint {
 	void		 setTarget(uint16_t t);
 	uint16_t	 getSpeed() const;
 	void		 setSpeed(uint16_t s);
-	virtual void moveUp() = 0;
+	virtual void move() = 0;
 
    protected:
 	uint16_t degre2pos(uint16_t deg) const;

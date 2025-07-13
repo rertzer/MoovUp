@@ -18,8 +18,14 @@ Shoulder& Shoulder::operator=(Shoulder const& s) {
 	return (*this);
 }
 
-void Shoulder::moveUp() {
+void Shoulder::move() {
 	updatePos();
 	motor.setPosition(pos);
 }
+
+void Shoulder::reset() {
+	motor_setup = motor_default;
+	target = motor_default.start;
+}
+
 const Joint::motor_setup_t Shoulder::motor_default = {Motor::motor_min_pwm, 1600, 1472, false};

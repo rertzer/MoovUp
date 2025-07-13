@@ -10,7 +10,8 @@ class Pinky : public Finger {
 	Pinky(Pinky const& p);
 	~Pinky();
 	Pinky& operator=(Pinky const& p);
-	void   moveUp();
+	void   move();
+	void   reset();
 
    private:
 	MotorPinky				   motor;

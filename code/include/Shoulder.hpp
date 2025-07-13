@@ -11,7 +11,8 @@ class Shoulder : public Joint {
 	~Shoulder();
 	Shoulder& operator=(Shoulder const& s);
 
-	void moveUp();
+	void move();
+	void reset();
 
    private:
 	MotorShoulder			   motor;

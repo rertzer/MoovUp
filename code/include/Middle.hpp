@@ -11,7 +11,8 @@ class Middle : public Finger {
 	~Middle();
 	Middle& operator=(Middle const& m);
 
-	void moveUp();
+	void move();
+	void reset();
 
    private:
 	MotorMiddle				   motor;

@@ -22,7 +22,9 @@ class Arm {
 	Wrist	 wrist;
 
 	void move();
+	void moveTrough();
 	void setSpeed(uint16_t s);
+	void reset();
 
    private:
 };

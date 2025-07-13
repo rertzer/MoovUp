@@ -1,4 +1,5 @@
 #include "Pinky.hpp"
+#include "Finger.hpp"
 
 Pinky::Pinky() : Finger(sensor_pin, motor_default), motor(motor_default.start) {}
 
@@ -16,9 +17,15 @@ Pinky& Pinky::operator=(Pinky const& p) {
 	return (*this);
 }
 
-void Pinky::moveUp() {
+void Pinky::move() {
 	updatePos();
 	motor.setPosition(pos);
+}
+
+void Pinky::reset() {
+	motor_setup = motor_default;
+	target = motor_default.start;
+	mode = MoveMode::POSITION;
 }
 
 const uint8_t			   Pinky::sensor_pin = 5;

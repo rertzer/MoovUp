@@ -1,4 +1,5 @@
 #include "Middle.hpp"
+#include "Finger.hpp"
 
 Middle::Middle() : Finger(sensor_pin, motor_default), motor(motor_default.start) {}
 
@@ -16,9 +17,15 @@ Middle& Middle::operator=(Middle const& m) {
 	return (*this);
 }
 
-void Middle::moveUp() {
+void Middle::move() {
 	updatePos();
 	motor.setPosition(pos);
+}
+
+void Middle::reset() {
+	motor_setup = motor_default;
+	target = motor_default.start;
+	mode = MoveMode::POSITION;
 }
 
 const uint8_t			   Middle::sensor_pin = 3;

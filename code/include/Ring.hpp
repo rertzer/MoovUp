@@ -11,7 +11,8 @@ class Ring : public Finger {
 	~Ring();
 	Ring& operator=(Ring const& m);
 
-	void moveUp();
+	void move();
+	void reset();
 
    private:
 	MotorRing				   motor;

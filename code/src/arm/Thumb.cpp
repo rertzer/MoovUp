@@ -1,4 +1,5 @@
 #include "Thumb.hpp"
+#include "Finger.hpp"
 
 Thumb::Thumb() : Finger(sensor_pin, motor_default), motor(motor_default.start) {}
 
@@ -15,9 +16,15 @@ Thumb& Thumb::operator=(Thumb const& t) {
 	return (*this);
 }
 
-void Thumb::moveUp() {
+void Thumb::move() {
 	updatePos();
 	motor.setPosition(pos);
+}
+
+void Thumb::reset() {
+	motor_setup = motor_default;
+	target = motor_default.start;
+	mode = MoveMode::POSITION;
 }
 
 const uint8_t			   Thumb::sensor_pin = 1;

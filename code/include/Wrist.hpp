@@ -11,7 +11,8 @@ class Wrist : public Joint {
 	~Wrist();
 	Wrist& operator=(Wrist const& w);
 
-	void moveUp();
+	void move();
+	void reset();
 
    private:
 	MotorWrist				   motor;

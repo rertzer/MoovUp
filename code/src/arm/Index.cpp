@@ -17,9 +17,15 @@ Index& Index::operator=(Index const& i) {
 	return (*this);
 }
 
-void Index::moveUp() {
+void Index::move() {
 	updatePos();
 	motor.setPosition(pos);
+}
+
+void Index::reset() {
+	motor_setup = motor_default;
+	target = motor_default.start;
+	mode = MoveMode::POSITION;
 }
 
 const uint8_t			   Index::sensor_pin = 2;

@@ -18,7 +18,7 @@ class Finger : public Joint {
 	uint16_t	 getSensorValue() const;
 	MoveMode	 getMode() const;
 	void		 setMode(MoveMode m);
-	virtual void moveUp() = 0;
+	virtual void move() = 0;
 
    protected:
 	Hall	 sensor;

@@ -16,19 +16,13 @@ int main() {
 	Motor::MotorsInit();
 	Arm arm;
 	arm.setSpeed(12);
-
-	uint16_t pos = 0;  // 1000;
-
-	// for (int i = 0; i < 250; ++i) {
-	// 	arm.move();
-	// 	_delay_ms(20);
-	// }
-
+	arm.moveTrough();
 	_delay_ms(2000);
 
+	uint16_t pos = 0;  // 1000;
 	// uart.printstrnl("");
 	// uart.printstr("index... ");
-	while (false) {
+	while (true) {
 		// uart.printstr("thumb... ");
 		// uart.printNbr(arm.thumb.getSensorValue());
 		uart.printstrnl("pos");

@@ -16,9 +16,15 @@ Ring& Ring::operator=(Ring const& r) {
 	return (*this);
 }
 
-void Ring::moveUp() {
+void Ring::move() {
 	updatePos();
 	motor.setPosition(pos);
+}
+
+void Ring::reset() {
+	motor_setup = motor_default;
+	target = motor_default.start;
+	mode = MoveMode::POSITION;
 }
 
 const uint8_t			   Ring::sensor_pin = 4;
