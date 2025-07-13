@@ -3,8 +3,7 @@
 
 extern Uart uart;
 
-Joint::Joint(uint16_t p_min, uint16_t p_max, bool mi)
-	: pos_min(p_min), pos_max(p_max), pos(p_min), target(p_max), speed(0), motor_inverted(mi) {}
+Joint::Joint(motor_setup_t ms) : motor_setup(ms), pos(ms.start), target(ms.start), speed(0) {}
 
 Joint::Joint(Joint const& j) {
 	*this = j;
@@ -14,38 +13,36 @@ Joint::~Joint() {}
 
 Joint& Joint::operator=(Joint const& j) {
 	if (this != &j) {
-		pos_min = j.pos_min;
-		pos_max = j.pos_max;
+		motor_setup = j.motor_setup;
 		pos = j.pos;
 		target = j.target;
 		speed = j.speed;
-		motor_inverted = j.motor_inverted;
 	}
 	return (*this);
 }
 
 uint16_t Joint::degre2pos(uint16_t deg) const {
-	if (motor_inverted) {
+	if (motor_setup.inverted) {
 		deg = 180 - deg;
 	}
 	uint16_t p = deg * 100;
 	p /= 9;
 	p += 500;
-	if (p < pos_min) {
-		p = pos_min;
-	} else if (p > pos_max) {
-		p = pos_max;
+	if (p < motor_setup.min) {
+		p = motor_setup.min;
+	} else if (p > motor_setup.max) {
+		p = motor_setup.max;
 	}
 	return (p);
 }
 uint16_t Joint::pos2degre(uint16_t p) const {
-	if (p < pos_min) {
-		p = pos_min;
-	} else if (p > pos_max) {
-		p = pos_max;
+	if (p < motor_setup.min) {
+		p = motor_setup.min;
+	} else if (p > motor_setup.max) {
+		p = motor_setup.max;
 	}
 	p = (p - 500) * 9 / 100;
-	if (motor_inverted) {
+	if (motor_setup.inverted) {
 		p = 180 - p;
 	}
 	return (p);

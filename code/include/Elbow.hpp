@@ -14,10 +14,8 @@ class Elbow : public Joint {
 	void moveUp();
 
    private:
-	MotorElbow			  motor;
-	static const uint16_t elbow_pos_min;
-	static const uint16_t elbow_pos_max;
-	static const bool	  inverted;
+	MotorElbow						  motor;
+	static const Joint::motor_setup_t motor_default;
 };
 
 #endif

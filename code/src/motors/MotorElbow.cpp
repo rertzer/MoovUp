@@ -4,13 +4,13 @@
  * using timer OC1A and pin D11 (PB5)
  */
 
-MotorElbow::MotorElbow() {
+MotorElbow::MotorElbow(uint16_t start_pos) {
 	// connected, non-inverted
 	TCCR1A |= (1 << COM1A1);
 	TCCR1A &= ~(1 << COM1A0);
 
-	// initial position at 0 degre (1 ms pulse)
-	OCR1A = 1000;
+	// initial position
+	OCR1A = start_pos;
 
 	// set pin as output
 	DDRB |= (1 << PB5);
@@ -18,7 +18,6 @@ MotorElbow::MotorElbow() {
 
 MotorElbow::MotorElbow(MotorElbow const& m) : Motor() {
 	(void)m;
-	MotorElbow();
 }
 
 MotorElbow::~MotorElbow() {

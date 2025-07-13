@@ -7,13 +7,13 @@ extern Uart uart;
  * using timer OC3C and pin D3 (PE5)
  */
 
-MotorIndex::MotorIndex() {
+MotorIndex::MotorIndex(uint16_t start_pos) {
 	// connected, non-inverted
 	TCCR3A |= (1 << COM3C1);
 	TCCR3A &= ~(1 << COM3C0);
 
-	// initial position at 180 degre (2.5 ms pulse)
-	OCR3C = 2500;
+	// initial position
+	OCR3C = start_pos;
 
 	// set pin
 	DDRE |= (1 << PE5);
@@ -21,7 +21,6 @@ MotorIndex::MotorIndex() {
 
 MotorIndex::MotorIndex(MotorIndex const& m) : Motor() {
 	(void)m;
-	MotorIndex();
 }
 
 MotorIndex::~MotorIndex() {

@@ -4,13 +4,13 @@
  * using timer OC3B and pin D2 (PE4)
  */
 
-MotorThumb::MotorThumb() {
+MotorThumb::MotorThumb(uint16_t start_pos) {
 	// connected, non-inverted
 	TCCR3A |= (1 << COM3B1);
 	TCCR3A &= ~(1 << COM3B0);
 
-	// initial position at 180 degre (2.5 ms pulse)
-	OCR3B = 2500;
+	// initial position
+	OCR3B = start_pos;
 
 	// set pin as output
 	DDRE |= (1 << PE4);
@@ -18,7 +18,6 @@ MotorThumb::MotorThumb() {
 
 MotorThumb::MotorThumb(MotorThumb const& m) : Motor() {
 	(void)m;
-	MotorThumb();
 }
 
 MotorThumb::~MotorThumb() {

@@ -4,13 +4,13 @@
  * using timer OC4A and pin D6 (PH3)
  */
 
-MotorRing::MotorRing() {
+MotorRing::MotorRing(uint16_t start_pos) {
 	// connected, non-inverted
 	TCCR4A |= (1 << COM4A1);
 	TCCR4A &= ~(1 << COM4A0);
 
-	// initial position at 0 degre (1 ms pulse)
-	OCR4A = 1000;
+	// initial position
+	OCR4A = start_pos;
 
 	// set pin as output
 	DDRH |= (1 << PH3);
@@ -18,7 +18,6 @@ MotorRing::MotorRing() {
 
 MotorRing::MotorRing(MotorRing const& m) : Motor() {
 	(void)m;
-	MotorRing();
 }
 
 MotorRing::~MotorRing() {

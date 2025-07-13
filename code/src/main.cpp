@@ -19,24 +19,16 @@ int main() {
 
 	uint16_t pos = 0;  // 1000;
 
-	arm.thumb.setTarget(0);
-	arm.index.setTarget(0);
-	arm.middle.setTarget(0);
-	arm.ring.setTarget(0);
-	arm.pinky.setTarget(0);
-	arm.wrist.setTarget(0);
-	arm.shoulder.setTarget(0);
-
-	for (int i = 0; i < 250; ++i) {
-		arm.move();
-		_delay_ms(20);
-	}
+	// for (int i = 0; i < 250; ++i) {
+	// 	arm.move();
+	// 	_delay_ms(20);
+	// }
 
 	_delay_ms(2000);
 
 	// uart.printstrnl("");
 	// uart.printstr("index... ");
-	while (42) {
+	while (false) {
 		// uart.printstr("thumb... ");
 		// uart.printNbr(arm.thumb.getSensorValue());
 		uart.printstrnl("pos");

@@ -4,13 +4,13 @@
  * using timer OC1B and pin D12 (PB6)
  */
 
-MotorShoulder::MotorShoulder() {
+MotorShoulder::MotorShoulder(uint16_t start_pos) {
 	// connected, non-inverted
 	TCCR1A |= (1 << COM1B1);
 	TCCR1A &= ~(1 << COM1B0);
 
-	// initial position at 180 degre (2 ms pulse)
-	OCR1B = 2000;
+	// initial position
+	OCR1B = start_pos;
 
 	// set pin as output
 	DDRB |= (1 << PB6);
@@ -18,7 +18,6 @@ MotorShoulder::MotorShoulder() {
 
 MotorShoulder::MotorShoulder(MotorShoulder const& m) : Motor() {
 	(void)m;
-	MotorShoulder();
 }
 
 MotorShoulder::~MotorShoulder() {

@@ -5,7 +5,7 @@
 
 class MotorElbow : public Motor {
    public:
-	MotorElbow();
+	MotorElbow(uint16_t start_pos);
 	MotorElbow(MotorElbow const& m);
 	~MotorElbow();
 	MotorElbow& operator=(MotorElbow const& m);

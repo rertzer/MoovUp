@@ -1,8 +1,8 @@
 #include "Wrist.hpp"
 
-Wrist::Wrist() : Joint(wrist_pos_min, wrist_pos_max, inverted), motor() {}
+Wrist::Wrist() : Joint(motor_default), motor(motor_default.start) {}
 
-Wrist::Wrist(Wrist const& w) : Joint(w.pos_min, w.pos_max, w.motor_inverted) {
+Wrist::Wrist(Wrist const& w) : Joint(w.motor_default), motor(w.motor) {
 	*this = w;
 }
 
@@ -21,6 +21,5 @@ void Wrist::moveUp() {
 	motor.setPosition(pos);
 }
 
-const uint16_t Wrist::wrist_pos_min = 500;
-const uint16_t Wrist::wrist_pos_max = 2500;
-const bool	   Wrist::inverted = false;
+const Joint::motor_setup_t Wrist::motor_default = {Motor::motor_min_pwm, Motor::motor_max_pwm, Motor::motor_min_pwm,
+												   false};

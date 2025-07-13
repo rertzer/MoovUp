@@ -5,7 +5,7 @@
 
 class MotorMiddle : public Motor {
    public:
-	MotorMiddle();
+	MotorMiddle(uint16_t start_pos);
 	MotorMiddle(MotorMiddle const& m);
 	~MotorMiddle();
 	MotorMiddle& operator=(MotorMiddle const& m);

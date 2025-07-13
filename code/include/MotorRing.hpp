@@ -5,7 +5,7 @@
 
 class MotorRing : public Motor {
    public:
-	MotorRing();
+	MotorRing(uint16_t start_pos);
 	MotorRing(MotorRing const& m);
 	~MotorRing();
 	MotorRing& operator=(MotorRing const& m);

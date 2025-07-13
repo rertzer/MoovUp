@@ -4,13 +4,13 @@
  * using timer OC4C and pin D8 (PH5)
  */
 
-MotorWrist::MotorWrist() {
+MotorWrist::MotorWrist(uint16_t start_pos) {
 	// connected, non-inverted
 	TCCR4A |= (1 << COM4C1);
 	TCCR4A &= ~(1 << COM4C0);
 
-	// initial position at 90 degre (1.5 ms pulse)
-	OCR4C = 1500;
+	// initial position
+	OCR4C = start_pos;
 
 	// set pin as output
 	DDRH |= (1 << PH5);
@@ -18,7 +18,6 @@ MotorWrist::MotorWrist() {
 
 MotorWrist::MotorWrist(MotorWrist const& m) : Motor() {
 	(void)m;
-	MotorWrist();
 }
 
 MotorWrist::~MotorWrist() {

@@ -5,7 +5,7 @@
 
 class MotorWrist : public Motor {
    public:
-	MotorWrist();
+	MotorWrist(uint16_t start_pos);
 	MotorWrist(MotorWrist const& m);
 	~MotorWrist();
 	MotorWrist& operator=(MotorWrist const& m);

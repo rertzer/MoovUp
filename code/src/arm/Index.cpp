@@ -1,9 +1,9 @@
 #include "Index.hpp"
 #include "Finger.hpp"
 
-Index::Index() : Finger(sensor_pin, index_pos_min, index_pos_max, inverted), motor() {}
+Index::Index() : Finger(sensor_pin, motor_default), motor(motor_default.start) {}
 
-Index::Index(Index const& i) : Finger(i.sensor.getPin(), i.pos_min, i.pos_max, i.motor_inverted) {
+Index::Index(Index const& i) : Finger(i.sensor.getPin(), i.motor_setup), motor(i.motor) {
 	*this = i;
 }
 
@@ -22,7 +22,6 @@ void Index::moveUp() {
 	motor.setPosition(pos);
 }
 
-const uint8_t  Index::sensor_pin = 2;
-const uint16_t Index::index_pos_min = 500;
-const uint16_t Index::index_pos_max = 2500;
-const bool	   Index::inverted = true;
+const uint8_t			   Index::sensor_pin = 2;
+const Joint::motor_setup_t Index::motor_default = {Motor::motor_min_pwm, Motor::motor_max_pwm, Motor::motor_max_pwm,
+												   true};

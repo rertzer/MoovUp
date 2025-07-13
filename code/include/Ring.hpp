@@ -14,11 +14,9 @@ class Ring : public Finger {
 	void moveUp();
 
    private:
-	MotorRing			  motor;
-	static const uint8_t  sensor_pin;
-	static const uint16_t ring_pos_min;
-	static const uint16_t ring_pos_max;
-	static const bool	  inverted;
+	MotorRing				   motor;
+	static const uint8_t	   sensor_pin;
+	static const motor_setup_t motor_default;
 };
 
 #endif

@@ -5,7 +5,7 @@
 
 class MotorIndex : public Motor {
    public:
-	MotorIndex();
+	MotorIndex(uint16_t start_pos);
 	MotorIndex(MotorIndex const& m);
 	~MotorIndex();
 	MotorIndex& operator=(MotorIndex const& m);

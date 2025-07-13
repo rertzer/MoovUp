@@ -5,7 +5,14 @@
 
 class Joint {
    public:
-	Joint(uint16_t pos_min, uint16_t pos_max, bool mi);
+	typedef struct motor_setup_s {
+		uint16_t min;
+		uint16_t max;
+		uint16_t start;
+		bool	 inverted;
+	} motor_setup_t;
+
+	Joint(motor_setup_t ms);
 	Joint(Joint const& m);
 	~Joint();
 	Joint& operator=(Joint const& m);
@@ -21,12 +28,11 @@ class Joint {
 	uint16_t degre2pos(uint16_t deg) const;
 	uint16_t pos2degre(uint16_t pos) const;
 	void	 updatePos();
-	uint16_t pos_min;
-	uint16_t pos_max;
-	uint16_t pos;
-	uint16_t target;
-	uint16_t speed;
-	bool	 motor_inverted;
+
+	motor_setup_t motor_setup;
+	uint16_t	  pos;
+	uint16_t	  target;
+	uint16_t	  speed;
 };
 
 #endif

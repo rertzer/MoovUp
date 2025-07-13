@@ -1,8 +1,8 @@
 #include "Ring.hpp"
 
-Ring::Ring() : Finger(sensor_pin, ring_pos_min, ring_pos_max, inverted), motor() {}
+Ring::Ring() : Finger(sensor_pin, motor_default), motor(motor_default.start) {}
 
-Ring::Ring(Ring const& r) : Finger(r.sensor.getPin(), r.pos_min, r.pos_max, r.motor_inverted) {
+Ring::Ring(Ring const& r) : Finger(r.sensor.getPin(), r.motor_setup), motor(r.motor) {
 	*this = r;
 }
 
@@ -21,7 +21,6 @@ void Ring::moveUp() {
 	motor.setPosition(pos);
 }
 
-const uint8_t  Ring::sensor_pin = 4;
-const uint16_t Ring::ring_pos_min = 500;
-const uint16_t Ring::ring_pos_max = 2500;
-const bool	   Ring::inverted = false;
+const uint8_t			   Ring::sensor_pin = 4;
+const Joint::motor_setup_t Ring::motor_default = {Motor::motor_min_pwm, Motor::motor_max_pwm, Motor::motor_min_pwm,
+												  false};

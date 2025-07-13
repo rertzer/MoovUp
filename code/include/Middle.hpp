@@ -14,11 +14,9 @@ class Middle : public Finger {
 	void moveUp();
 
    private:
-	MotorMiddle			  motor;
-	static const uint8_t  sensor_pin;
-	static const uint16_t middle_pos_min;
-	static const uint16_t middle_pos_max;
-	static const bool	  inverted;
+	MotorMiddle				   motor;
+	static const uint8_t	   sensor_pin;
+	static const motor_setup_t motor_default;
 };
 
 #endif

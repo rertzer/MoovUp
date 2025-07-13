@@ -1,8 +1,8 @@
 #include "Elbow.hpp"
 
-Elbow::Elbow() : Joint(elbow_pos_min, elbow_pos_max, inverted), motor() {}
+Elbow::Elbow() : Joint(motor_default), motor(motor_default.start) {}
 
-Elbow::Elbow(Elbow const& e) : Joint(e.pos_min, e.pos_max, e.motor_inverted) {
+Elbow::Elbow(Elbow const& e) : Joint(e.motor_setup), motor(e.motor) {
 	*this = e;
 }
 Elbow::~Elbow() {}
@@ -19,6 +19,6 @@ void Elbow::moveUp() {
 	updatePos();
 	motor.setPosition(pos);
 }
-const uint16_t Elbow::elbow_pos_min = 500;
-const uint16_t Elbow::elbow_pos_max = 2500;
-const bool	   Elbow::inverted = false;
+
+const Joint::motor_setup_t Elbow::motor_default = {Motor::motor_min_pwm, Motor::motor_max_pwm, Motor::motor_min_pwm,
+												   false};

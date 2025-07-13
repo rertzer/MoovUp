@@ -1,9 +1,9 @@
 #include "Finger.hpp"
 
-Finger::Finger(uint8_t sensor_pin, uint16_t p_min, uint16_t p_max, bool mi)
-	: Joint(p_min, p_max, mi), sensor(sensor_pin), pressure_target(0), mode(MoveMode::POSITION) {}
+Finger::Finger(uint8_t sensor_pin, motor_setup_t ms)
+	: Joint(ms), sensor(sensor_pin), pressure_target(0), mode(MoveMode::POSITION) {}
 
-Finger::Finger(Finger const& f) : Joint(f.pos_min, f.pos_max, f.motor_inverted), sensor(f.sensor.getPin()) {
+Finger::Finger(Finger const& f) : Joint(f.motor_setup), sensor(f.sensor.getPin()) {
 	*this = f;
 }
 

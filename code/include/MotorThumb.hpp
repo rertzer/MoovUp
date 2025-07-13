@@ -5,7 +5,7 @@
 
 class MotorThumb : public Motor {
    public:
-	MotorThumb();
+	MotorThumb(uint16_t start_pos);
 	MotorThumb(MotorThumb const& m);
 	~MotorThumb();
 	MotorThumb& operator=(MotorThumb const& m);

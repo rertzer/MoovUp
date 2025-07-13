@@ -7,13 +7,13 @@ extern Uart uart;
  * using timer OC3A and pin D5 (PE3)
  */
 
-MotorMiddle::MotorMiddle() {
+MotorMiddle::MotorMiddle(uint16_t start_pos) {
 	// connected, non-inverted
 	TCCR3A |= (1 << COM3A1);
 	TCCR3A &= ~(1 << COM3A0);
 
-	// initial position at 0 degre (1 ms pulse)
-	OCR3A = 1000;
+	// initial position
+	OCR3A = start_pos;
 
 	// set pin as output
 	DDRE |= (1 << PE3);
@@ -21,7 +21,6 @@ MotorMiddle::MotorMiddle() {
 
 MotorMiddle::MotorMiddle(MotorMiddle const& m) : Motor() {
 	(void)m;
-	MotorMiddle();
 }
 
 MotorMiddle::~MotorMiddle() {

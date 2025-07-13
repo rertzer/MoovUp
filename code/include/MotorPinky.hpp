@@ -5,7 +5,7 @@
 
 class MotorPinky : public Motor {
    public:
-	MotorPinky();
+	MotorPinky(uint16_t start_pos);
 	MotorPinky(MotorPinky const& m);
 	~MotorPinky();
 	MotorPinky& operator=(MotorPinky const& m);

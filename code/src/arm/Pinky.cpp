@@ -1,8 +1,8 @@
 #include "Pinky.hpp"
 
-Pinky::Pinky() : Finger(sensor_pin, pinky_pos_min, pinky_pos_max, inverted), motor() {}
+Pinky::Pinky() : Finger(sensor_pin, motor_default), motor(motor_default.start) {}
 
-Pinky::Pinky(Pinky const& p) : Finger(p.sensor.getPin(), p.pos_min, p.pos_max, p.motor_inverted) {
+Pinky::Pinky(Pinky const& p) : Finger(p.sensor.getPin(), p.motor_setup), motor(p.motor) {
 	*this = p;
 }
 
@@ -21,7 +21,6 @@ void Pinky::moveUp() {
 	motor.setPosition(pos);
 }
 
-const uint8_t  Pinky::sensor_pin = 5;
-const uint16_t Pinky::pinky_pos_min = 500;
-const uint16_t Pinky::pinky_pos_max = 2500;
-const bool	   Pinky::inverted = false;
+const uint8_t			   Pinky::sensor_pin = 5;
+const Joint::motor_setup_t Pinky::motor_default = {Motor::motor_min_pwm, Motor::motor_max_pwm, Motor::motor_min_pwm,
+												   false};

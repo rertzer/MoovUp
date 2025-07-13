@@ -5,7 +5,7 @@
 
 class MotorShoulder : public Motor {
    public:
-	MotorShoulder();
+	MotorShoulder(uint16_t start_pos);
 	MotorShoulder(MotorShoulder const& m);
 	~MotorShoulder();
 	MotorShoulder& operator=(MotorShoulder const& m);
