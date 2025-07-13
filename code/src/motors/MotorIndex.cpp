@@ -12,8 +12,8 @@ MotorIndex::MotorIndex() {
 	TCCR3A |= (1 << COM3C1);
 	TCCR3A &= ~(1 << COM3C0);
 
-	// initial position at 0 degre (1 ms pulse)
-	OCR3C = 1000;
+	// initial position at 180 degre (2.5 ms pulse)
+	OCR3C = 2500;
 
 	// set pin
 	DDRE |= (1 << PE5);
@@ -43,7 +43,5 @@ uint16_t MotorIndex::getPosition() const {
 }
 
 void MotorIndex::setPosition(uint16_t pos) {
-	uart.printNbr(pos);
-	uart.printstrnl(" index");
 	OCR3C = pos;
 }

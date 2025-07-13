@@ -23,5 +23,5 @@ void Shoulder::moveUp() {
 	motor.setPosition(pos);
 }
 const uint16_t Shoulder::shoulder_pos_min = 500;
-const uint16_t Shoulder::shoulder_pos_max = 1500;
+const uint16_t Shoulder::shoulder_pos_max = 1600;
 const bool	   Shoulder::inverted = false;

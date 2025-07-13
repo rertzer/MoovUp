@@ -19,6 +19,7 @@ int main() {
 
 	uint16_t pos = 0;  // 1000;
 
+	arm.thumb.setTarget(0);
 	arm.index.setTarget(0);
 	arm.middle.setTarget(0);
 	arm.ring.setTarget(0);
@@ -26,23 +27,26 @@ int main() {
 	arm.wrist.setTarget(0);
 	arm.shoulder.setTarget(0);
 
-	// for (int i = 0; i < 250; ++i) {
-	// 	arm.move();
-	// 	_delay_ms(20);
-	// }
+	for (int i = 0; i < 250; ++i) {
+		arm.move();
+		_delay_ms(20);
+	}
 
 	_delay_ms(2000);
 
+	// uart.printstrnl("");
+	// uart.printstr("index... ");
 	while (42) {
 		// uart.printstr("thumb... ");
 		// uart.printNbr(arm.thumb.getSensorValue());
-		// uart.printstrnl("");
+		uart.printstrnl("pos");
+		uart.printNbr(pos);
 		// uart.printstr("index... ");
 		// uart.printNbr(arm.index.getSensorValue());
-		// uart.printstrnl("");
-		uart.printstr("middle... ");
-		uart.printNbr(arm.middle.getSensorValue());
 		uart.printstrnl("");
+		// uart.printstr("     middle... ");
+		// uart.printNbr(arm.middle.getSensorValue());
+		// uart.printstrnl("");
 		// uart.printstr("ring... ");
 		// uart.printNbr(arm.ring.getSensorValue());
 		// uart.printstrnl("");
@@ -50,13 +54,13 @@ int main() {
 		// uart.printNbr(arm.pinky.getSensorValue());
 		// uart.printstrnl("");
 		// arm.thumb.setTarget(pos);
-		// arm.index.setTarget(pos);
+		arm.index.setTarget(pos);
 		// arm.middle.setTarget(pos);
 		// arm.ring.setTarget(pos);
 		// arm.pinky.setTarget(pos);
 		// arm.shoulder.setTarget(pos);
 		// arm.wrist.setTarget(pos);
-		// arm.move();
+		arm.move();
 		if (direction) {
 			if (moving == moving_top) {
 				moving = 0;
@@ -77,8 +81,8 @@ int main() {
 				pos = 0;
 			}
 		}
-		pos++;
-		_delay_ms(660);
+		moving++;
+		_delay_ms(60);
 	}
 	return (0);
 };

@@ -43,7 +43,5 @@ uint16_t MotorMiddle::getPosition() const {
 }
 
 void MotorMiddle::setPosition(uint16_t pos) {
-	uart.printNbr(pos);
-	uart.printstrnl(" middle");
 	OCR3A = pos;
 }
