@@ -19,8 +19,34 @@ Finger& Finger::operator=(Finger const& f) {
 	return (*this);
 }
 
-uint16_t Finger::getSensorValue() const {
+uint16_t Finger::getPressure() const {
 	return (sensor.readValue());
+}
+
+PressureLevel Finger::getPressureLevel() const {
+	PressureLevel pl = PressureLevel::BASE;
+	uint16_t	  p = sensor.readValue();
+
+	if (p < pressure_base) {
+		p = pressure_base;
+	}
+	p -= pressure_base;
+	if (p >= 10) {
+		pl = PressureLevel::HIGH;
+	} else if (p >= 5) {
+		pl = PressureLevel::MILD;
+	} else if (p >= 2) {
+		pl = PressureLevel::LIGHT;
+	}
+	return (pl);
+}
+
+uint16_t Finger::getPressureBase() const {
+	return (pressure_base);
+}
+
+void Finger::setPressureBase(uint16_t base) {
+	pressure_base = base;
 }
 
 uint16_t Finger::getPressureTarget() const {

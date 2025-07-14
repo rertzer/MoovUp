@@ -2,6 +2,8 @@
 
 #include "Arm.hpp"
 #include "Motor.hpp"
+#include "MotorCheck.hpp"
+#include "SensorCalibrate.hpp"
 #include "Uart.hpp"
 
 extern Uart uart;
@@ -15,9 +17,19 @@ int main() {
 	uint8_t const moving_top = 1;
 	Motor::MotorsInit();
 	Arm arm;
-	arm.setSpeed(12);
+	arm.reset();
 	arm.moveTrough();
 	_delay_ms(2000);
+
+	MotorCheck motorcheck(arm);
+	motorcheck.run();
+
+	SensorCalibrate sensorcalibrate(arm);
+	uint8_t			error = sensorcalibrate.calibrate();
+	if (error) {
+		uart.printstrnl("sensor calibration error...");
+		_delay_ms(2000);
+	}
 
 	uint16_t pos = 0;  // 1000;
 	// uart.printstrnl("");

@@ -5,6 +5,7 @@
 #include "hallSensor.hpp"
 
 enum class MoveMode { POSITION, PRESSURE };
+enum class PressureLevel { BASE, LIGHT, MILD, HIGH };
 
 class Finger : public Joint {
    public:
@@ -13,15 +14,19 @@ class Finger : public Joint {
 	~Finger();
 	Finger& operator=(Finger const& m);
 
-	uint16_t	 getPressureTarget() const;
-	void		 setPressureTarget(uint16_t p);
-	uint16_t	 getSensorValue() const;
-	MoveMode	 getMode() const;
-	void		 setMode(MoveMode m);
-	virtual void move() = 0;
+	uint16_t	  getPressure() const;
+	PressureLevel getPressureLevel() const;
+	uint16_t	  getPressureBase() const;
+	void		  setPressureBase(uint16_t base);
+	uint16_t	  getPressureTarget() const;
+	void		  setPressureTarget(uint16_t p);
+	MoveMode	  getMode() const;
+	void		  setMode(MoveMode m);
+	virtual void  move() = 0;
 
    protected:
 	Hall	 sensor;
+	uint16_t pressure_base;
 	uint16_t pressure_target;
 	MoveMode mode;
 };

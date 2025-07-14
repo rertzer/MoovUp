@@ -8,11 +8,11 @@ class MotorCheck {
    public:
 	MotorCheck(Arm& a);
 	void run();
-	void reset();
-	void jointTest(char const* name, Joint* joint);
 
    private:
-	Arm arm;
+	void reset();
+	void jointTest(char const* name, Joint* joint);
+	Arm	 arm;
 };
 
 #endif

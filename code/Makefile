@@ -56,6 +56,7 @@ SRCPP			= main.cpp \
 				arm/Shoulder.cpp \
 				arm/Wrist.cpp \
 				behavior/MotorCheck.cpp \
+				behavior/SensorCalibrate.cpp \
 				sensors/hallSensor.cpp \
 				uart/Uart.cpp \
 				utils/ft_itoa.cpp

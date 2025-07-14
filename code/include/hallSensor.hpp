@@ -66,8 +66,7 @@ class Hall {
 	Hall& operator=(Hall const&);
 	~Hall(void);
 
-	uint8_t getPin(void) const;
-
+	uint8_t	 getPin(void) const;
 	uint16_t readValue(void) const;
 };
 
