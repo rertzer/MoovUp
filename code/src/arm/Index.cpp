@@ -29,5 +29,4 @@ void Index::reset() {
 }
 
 const uint8_t			   Index::sensor_pin = 2;
-const Joint::motor_setup_t Index::motor_default = {Motor::motor_min_pwm, Motor::motor_max_pwm, Motor::motor_max_pwm,
-												   true};
+const Joint::motor_setup_t Index::motor_default = {Joint::pwm_min, Joint::pwm_max, Joint::pwm_max, true};

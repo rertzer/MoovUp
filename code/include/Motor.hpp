@@ -17,9 +17,7 @@ class Motor {
 	virtual uint16_t getPosition() const = 0;
 	virtual void	 setPosition(uint16_t pos) = 0;
 
-	static void			  MotorsInit();
-	static const uint16_t motor_min_pwm;
-	static const uint16_t motor_max_pwm;
+	static void MotorsInit();
 
    private:
 };

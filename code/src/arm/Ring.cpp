@@ -28,5 +28,4 @@ void Ring::reset() {
 }
 
 const uint8_t			   Ring::sensor_pin = 4;
-const Joint::motor_setup_t Ring::motor_default = {Motor::motor_min_pwm, Motor::motor_max_pwm, Motor::motor_min_pwm,
-												  false};
+const Joint::motor_setup_t Ring::motor_default = {Joint::pwm_min, Joint::pwm_max, Joint::pwm_min, false};

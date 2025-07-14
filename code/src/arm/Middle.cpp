@@ -29,5 +29,4 @@ void Middle::reset() {
 }
 
 const uint8_t			   Middle::sensor_pin = 3;
-const Joint::motor_setup_t Middle::motor_default = {Motor::motor_min_pwm, Motor::motor_max_pwm, Motor::motor_min_pwm,
-													false};
+const Joint::motor_setup_t Middle::motor_default = {Joint::pwm_min, Joint::pwm_max, Joint::pwm_min, false};

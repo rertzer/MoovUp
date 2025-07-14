@@ -54,5 +54,3 @@ void Motor::MotorsInit() {
 	ICR3 = MOTOR_PWM_TOP;
 	ICR4 = MOTOR_PWM_TOP;
 }
-const uint16_t Motor::motor_min_pwm = 544;
-const uint16_t Motor::motor_max_pwm = 2400;

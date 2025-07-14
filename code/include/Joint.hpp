@@ -17,6 +17,8 @@ class Joint {
 	~Joint();
 	Joint& operator=(Joint const& m);
 
+	uint16_t	 getMin() const;
+	uint16_t	 getMax() const;
 	uint16_t	 getPosition() const;
 	uint16_t	 getTarget() const;
 	void		 setTarget(uint16_t t);
@@ -33,6 +35,9 @@ class Joint {
 	uint16_t	  pos;
 	uint16_t	  target;
 	uint16_t	  speed;
+
+	static const uint16_t pwm_min;
+	static const uint16_t pwm_max;
 };
 
 #endif

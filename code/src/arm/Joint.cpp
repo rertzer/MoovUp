@@ -22,12 +22,16 @@ Joint& Joint::operator=(Joint const& j) {
 }
 
 uint16_t Joint::degre2pos(uint16_t deg) const {
+	if (deg > 180) {
+		deg = 180;
+	}
 	if (motor_setup.inverted) {
 		deg = 180 - deg;
 	}
-	uint16_t p = deg * 100;
-	p /= 9;
-	p += 500;
+	// 31 / 3 approximate (2400 - 544) / 180
+	uint16_t p = deg * 31;
+	p /= 3;
+	p += pwm_min;
 	if (p < motor_setup.min) {
 		p = motor_setup.min;
 	} else if (p > motor_setup.max) {
@@ -41,11 +45,19 @@ uint16_t Joint::pos2degre(uint16_t p) const {
 	} else if (p > motor_setup.max) {
 		p = motor_setup.max;
 	}
-	p = (p - 500) * 9 / 100;
+	p = (p - pwm_min) * 3 / 31;
 	if (motor_setup.inverted) {
 		p = 180 - p;
 	}
 	return (p);
+}
+
+uint16_t Joint::getMin() const {
+	return (pos2degre(motor_setup.min));
+}
+
+uint16_t Joint::getMax() const {
+	return (pos2degre(motor_setup.max));
 }
 
 uint16_t Joint::getPosition() const {
@@ -81,3 +93,6 @@ void Joint::updatePos() {
 		}
 	}
 }
+
+const uint16_t Joint::pwm_min = 544;
+const uint16_t Joint::pwm_max = 2400;

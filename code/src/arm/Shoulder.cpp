@@ -1,8 +1,6 @@
 #include "Shoulder.hpp"
 
-Shoulder::Shoulder() : Joint(motor_default), motor(motor_default.start) {
-	setTarget(150);
-}
+Shoulder::Shoulder() : Joint(motor_default), motor(motor_default.start) {}
 
 Shoulder::Shoulder(Shoulder const& s) : Joint(s.motor_setup), motor(s.motor) {
 	*this = s;
@@ -28,4 +26,4 @@ void Shoulder::reset() {
 	target = motor_default.start;
 }
 
-const Joint::motor_setup_t Shoulder::motor_default = {Motor::motor_min_pwm, 1600, 1472, false};
+const Joint::motor_setup_t Shoulder::motor_default = {Joint::pwm_min, 1600, 1472, false};

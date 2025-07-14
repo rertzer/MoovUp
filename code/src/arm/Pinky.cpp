@@ -29,5 +29,4 @@ void Pinky::reset() {
 }
 
 const uint8_t			   Pinky::sensor_pin = 5;
-const Joint::motor_setup_t Pinky::motor_default = {Motor::motor_min_pwm, Motor::motor_max_pwm, Motor::motor_min_pwm,
-												   false};
+const Joint::motor_setup_t Pinky::motor_default = {Joint::pwm_min, Joint::pwm_max, Joint::pwm_min, false};
