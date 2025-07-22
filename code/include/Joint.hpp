@@ -36,8 +36,8 @@ class Joint {
 	uint16_t	  target;
 	uint16_t	  speed;
 
-	static const uint16_t pwm_min;
-	static const uint16_t pwm_max;
+	static constexpr uint16_t pwm_min{544};
+	static constexpr uint16_t pwm_max{2400};
 };
 
 #endif

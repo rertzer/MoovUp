@@ -15,8 +15,8 @@ class Elbow : public Joint {
 	void reset();
 
    private:
-	MotorElbow						  motor;
-	static const Joint::motor_setup_t motor_default;
+	MotorElbow							  motor;
+	static constexpr Joint::motor_setup_t motor_default{Joint::pwm_min, Joint::pwm_max, Joint::pwm_min, false};
 };
 
 #endif

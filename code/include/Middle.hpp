@@ -15,9 +15,9 @@ class Middle : public Finger {
 	void reset();
 
    private:
-	MotorMiddle				   motor;
-	static const uint8_t	   sensor_pin;
-	static const motor_setup_t motor_default;
+	MotorMiddle					   motor;
+	static constexpr uint8_t	   sensor_pin{3};
+	static constexpr motor_setup_t motor_default{Joint::pwm_min, Joint::pwm_max, Joint::pwm_min, false};
 };
 
 #endif

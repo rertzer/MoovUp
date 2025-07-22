@@ -15,9 +15,9 @@ class Ring : public Finger {
 	void reset();
 
    private:
-	MotorRing				   motor;
-	static const uint8_t	   sensor_pin;
-	static const motor_setup_t motor_default;
+	MotorRing					   motor;
+	static constexpr uint8_t	   sensor_pin{4};
+	static constexpr motor_setup_t motor_default{Joint::pwm_min, Joint::pwm_max, Joint::pwm_min, false};
 };
 
 #endif

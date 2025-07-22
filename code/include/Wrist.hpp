@@ -15,8 +15,8 @@ class Wrist : public Joint {
 	void reset();
 
    private:
-	MotorWrist				   motor;
-	static const motor_setup_t motor_default;
+	MotorWrist					   motor;
+	static constexpr motor_setup_t motor_default{Joint::pwm_min, Joint::pwm_max, Joint::pwm_min, false};
 };
 
 #endif

@@ -25,5 +25,4 @@ void Shoulder::reset() {
 	motor_setup = motor_default;
 	target = motor_default.start;
 }
-
-const Joint::motor_setup_t Shoulder::motor_default = {Joint::pwm_min, 1600, 1472, false};
+constexpr Joint::motor_setup_t Shoulder::motor_default;

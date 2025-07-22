@@ -15,9 +15,9 @@ class Thumb : public Finger {
 	void reset();
 
    private:
-	MotorThumb				   motor;
-	static const uint8_t	   sensor_pin;
-	static const motor_setup_t motor_default;
+	MotorThumb					   motor;
+	static constexpr uint8_t	   sensor_pin{1};
+	static constexpr motor_setup_t motor_default{Joint::pwm_min, Joint::pwm_max, Joint::pwm_max, true};
 };
 
 #endif

@@ -26,4 +26,4 @@ void Elbow::reset() {
 	target = motor_default.start;
 }
 
-const Joint::motor_setup_t Elbow::motor_default = {Joint::pwm_min, Joint::pwm_max, Joint::pwm_min, false};
+constexpr Joint::motor_setup_t Elbow::motor_default;

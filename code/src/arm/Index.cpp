@@ -28,5 +28,5 @@ void Index::reset() {
 	mode = MoveMode::POSITION;
 }
 
-const uint8_t			   Index::sensor_pin = 2;
-const Joint::motor_setup_t Index::motor_default = {Joint::pwm_min, Joint::pwm_max, Joint::pwm_max, true};
+constexpr uint8_t			   Index::sensor_pin;
+constexpr Joint::motor_setup_t Index::motor_default;

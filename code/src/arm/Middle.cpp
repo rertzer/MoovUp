@@ -28,5 +28,5 @@ void Middle::reset() {
 	mode = MoveMode::POSITION;
 }
 
-const uint8_t			   Middle::sensor_pin = 3;
-const Joint::motor_setup_t Middle::motor_default = {Joint::pwm_min, Joint::pwm_max, Joint::pwm_min, false};
+constexpr uint8_t			   Middle::sensor_pin;
+constexpr Joint::motor_setup_t Middle::motor_default;

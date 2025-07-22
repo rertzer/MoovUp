@@ -26,6 +26,5 @@ void Thumb::reset() {
 	target = motor_default.start;
 	mode = MoveMode::POSITION;
 }
-
-const uint8_t			   Thumb::sensor_pin = 1;
-const Joint::motor_setup_t Thumb::motor_default = {Joint::pwm_min, Joint::pwm_max, Joint::pwm_max, true};
+constexpr uint8_t			   Thumb::sensor_pin;
+constexpr Joint::motor_setup_t Thumb::motor_default;

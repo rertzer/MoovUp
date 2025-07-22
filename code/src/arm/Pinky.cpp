@@ -28,5 +28,5 @@ void Pinky::reset() {
 	mode = MoveMode::POSITION;
 }
 
-const uint8_t			   Pinky::sensor_pin = 5;
-const Joint::motor_setup_t Pinky::motor_default = {Joint::pwm_min, Joint::pwm_max, Joint::pwm_min, false};
+constexpr uint8_t			   Pinky::sensor_pin;
+constexpr Joint::motor_setup_t Pinky::motor_default;

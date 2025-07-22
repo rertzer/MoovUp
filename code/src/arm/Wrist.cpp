@@ -25,5 +25,4 @@ void Wrist::reset() {
 	motor_setup = motor_default;
 	target = motor_default.start;
 }
-
-const Joint::motor_setup_t Wrist::motor_default = {Joint::pwm_min, Joint::pwm_max, Joint::pwm_min, false};
+constexpr Joint::motor_setup_t Wrist::motor_default;

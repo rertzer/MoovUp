@@ -93,6 +93,5 @@ void Joint::updatePos() {
 		}
 	}
 }
-
-const uint16_t Joint::pwm_min = 544;
-const uint16_t Joint::pwm_max = 2400;
+constexpr uint16_t Joint::pwm_min;
+constexpr uint16_t Joint::pwm_max;

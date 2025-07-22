@@ -15,8 +15,8 @@ class Shoulder : public Joint {
 	void reset();
 
    private:
-	MotorShoulder			   motor;
-	static const motor_setup_t motor_default;
+	MotorShoulder				   motor;
+	static constexpr motor_setup_t motor_default{Joint::pwm_min, 1600, 1472, false};
 };
 
 #endif
