@@ -2,7 +2,7 @@
 
 MoovUp is a 3D printed robotic arm project based on the [InMoov](inmoov.fr) project.
 
-<img src="pictures/party_1.jpg" alt="MoovUp toasting width="200"/>
+<img src="pictures/party_1.jpg" alt="MoovUp toasting" width="200"/>
 MoovUp toasting.
 
 # pinout
