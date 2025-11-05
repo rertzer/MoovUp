@@ -4,6 +4,21 @@ MoovUp is a 3D printed robotic arm based on the [InMoov](inmoov.fr) project.
 
 <img src="pictures/party_1.jpg" title= "MoovUp toasting" alt="MoovUp toasting" width="200"/>
 
+# UART Commands
+
+- shoulder left
+- shoulder right
+- wrist left
+- wrist right
+- hand open
+- hand close
+- hand grab
+- thumb open
+- thumb close
+- index open
+- index close
+- finger open
+
 # pinout
 
 | ArduinoMega pin | ATmega 2560 port | timer | kind   | usage    |
