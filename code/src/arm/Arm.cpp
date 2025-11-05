@@ -122,7 +122,7 @@ void Arm::fingerOpen() {
 }
 void Arm::fingerClose() {
 	index.setTarget(180);
-	middle.setTarget(0);
+	middle.setTarget(180);
 	ring.setTarget(180);
-	pinky.setTarget(180);
+	pinky.setTarget(0);
 }
