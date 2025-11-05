@@ -25,6 +25,20 @@ class Arm {
 	void moveTrough();
 	void setSpeed(uint16_t s);
 	void reset();
+	void exec(char* line);
+	void shoulderLeft();
+	void shoulderRight();
+	void wristLeft();
+	void wristRight();
+	void handOpen();
+	void handClose();
+	void handGrab();
+	void thumbOpen();
+	void thumbClose();
+	void indexOpen();
+	void indexClose();
+	void fingerOpen();
+	void fingerClose();
 
    private:
 };

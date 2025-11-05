@@ -15,6 +15,10 @@
 
 #include <avr/io.h>
 
+#define LINE_MAX_SIZE (uint8_t)80
+#define F_CPU 16000000UL
+#define BAUDO 9600UL
+
 class Uart {
    public:
 	Uart(void);
@@ -22,13 +26,21 @@ class Uart {
 	Uart& operator=(Uart const&);
 	~Uart(void);
 
-	void init(void);
-	void tx(char);
-	char rx(void);
-	void printstrnl(char const*);
-	void printstr(char const*);
-	void printNbr(uint16_t nb);
-	void endl(void);
+	void  init(void);
+	void  tx(char);
+	char  rx(void);
+	void  printstrnl(char const*);
+	void  printstr(char const*);
+	void  printNbr(uint16_t nb);
+	void  endl(void);
+	void  readline();
+	void  printline();
+	char* getline();
+	void  resetline();
+
+   private:
+	char	line[LINE_MAX_SIZE];
+	uint8_t line_len;
 };
 
 #endif
