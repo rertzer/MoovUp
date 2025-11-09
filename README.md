@@ -1,6 +1,10 @@
 # MoovUp
 
 MoovUp is a 3D printed robotic arm based on the [InMoov](inmoov.fr) project.
+Mounted on a wooden crate, it has eight degrees of freedom and each finger is equipped with a pressure sensor.
+The thumb's position has been redesigned to give a grasping function.
+The arm is driven by an ATMega2560 microcontroler programmed in bare-metal C++.
+Communication and control are implemented via a UART serial interface.
 
 <img src="pictures/party_1.jpg" title= "MoovUp toasting" alt="MoovUp toasting" width="200"/>
 
